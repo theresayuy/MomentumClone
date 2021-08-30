@@ -9,7 +9,10 @@ A clone of the popular Google Chrome browser extension, [Momentum](https://chrom
 - To Do List
 - Bookmarks
 
-## Credits
+## Technologies Used
 - [This API](https://type.fit/api/quotes) for generating inspirational quotes.
 - [Lorum Picsum](https://picsum.photos/) for generating background images.
-- [OpenWeatherMap API Free Tier](https://openweathermap.org/api) for the weather
+- [OpenWeatherMap API Free Tier](https://openweathermap.org/api) for the weather.
+
+## Credits
+- Google chrome extension tutorials by [rishabh1403](https://www.youtube.com/rishabh1403)
