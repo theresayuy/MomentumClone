@@ -8,6 +8,7 @@ A clone of the popular Google Chrome browser extension, [Momentum](https://chrom
 - Daily Focus
 - To Do List
 - Bookmarks
+- Google Search
 
 ## Technologies Used
 - [This API](https://type.fit/api/quotes) for generating inspirational quotes.
