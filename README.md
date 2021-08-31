@@ -9,7 +9,7 @@ A clone of the popular Google Chrome browser extension, [Momentum](https://chrom
 - To Do List
 - Bookmarks
 - Google Search
-- Weather (temperature in celcius) and general description of weather condition.
+- Temperature (in celcius) and general description of weather condition.
 
 ## Technologies Used
 - (https://type.fit/api/quotes) for generating inspirational quotes.
