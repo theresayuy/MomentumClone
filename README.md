@@ -12,7 +12,7 @@ A clone of the popular Google Chrome browser extension, [Momentum](https://chrom
 - Temperature (in celcius) and general description of weather condition.
 
 ## Technologies Used
-- (https://type.fit/api/quotes) for generating inspirational quotes.
+- https://type.fit/api/quotes for generating inspirational quotes.
 - [Lorum Picsum](https://picsum.photos/) for generating background images.
 - [OpenWeatherMap API Free Tier](https://openweathermap.org/api) for gathering information about the weather.
 
