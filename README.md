@@ -2,8 +2,8 @@
 A clone of the popular Google Chrome browser extension, [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=en) by [momentumdash.com](https://momentumdash.com/).
 
 ## Features
-- Random inspirational quote every time new tab page is refreshed.
-- Random background image every time new tab page is refreshed.
+- Random inspirational quote when page is refreshed.
+- Random background image when page is refreshed.
 - Time
 - Daily Focus
 - To Do List
