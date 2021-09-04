@@ -5,9 +5,9 @@ A clone of the popular Google Chrome browser extension, [Momentum](https://chrom
 - Random inspirational quote when page is refreshed.
 - Random background image when page is refreshed.
 - Digital Clock (Military Time)
-- Set a Daily Focus
-- To Do List
-- Create bookmarks of whatever websites you want.
+- Set a Daily Focus, cross it out, edit it, or delete it
+- To Do List (add, edit, delete, and crossout tasks)
+- Create bookmarks of whatever websites you want (also edit and delete bookmarks).
 - Google Search
 - Temperature (in celcius) and general description of weather condition.
 
