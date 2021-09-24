@@ -12,6 +12,8 @@ A clone of the popular Google Chrome browser extension, [Momentum](https://chrom
 - Temperature (in celcius) and general description of weather condition.
 
 ## How to Install and Use this
+1. Clone this repository
+2. 
 
 ## Technologies Used
 - https://type.fit/api/quotes for generating inspirational quotes.
