@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.ico">
+</head>
+<body>
+    <div id="bg">
+        <div class="overlay"><!-- Added because some of the background images clash with the text --></div>
+    </div>
+    <div class="container">
+        <!-- Modal for to do list-->
+        <div class="modal" id="todo-modal">
+            <div class="modal-content" id="todo-modal-content">
+                <span class="close" id="todo-close">&times;</span>
+                <!-- Contains the modal title and a form for adding new task -->
+                <div id="todo-modal-content-head">
+                    <h3>Today</h3>
+                    <form id="todo-modal-form" autocomplete="off">
+                        <input type="text" id="todo-text" placeholder="Add a new todo."/>
+                    </form>
+                </div>
+                <!-- Contains the actual to do list-->
+                <div id="todo-modal-content-body">
+                    <!-- [[ISSUE: CONTENT DOESN'T REMAIN IN THE MODAL!]] -->
+                    <ul id="todo-modal-ul"></ul>
+                </div>                                                                                                                                                                                  </div>
+            </div>            
+        </div>
+        <!-- Modal for links button-->
+        <div class="modal" id="links-modal">
+            <div class="modal-content" id="links-modal-content">
+                <!-- Contains the button to add a new bookmark -->
+                <div id="links-modal-content-head">
+                    <span class="close" id="links-close">&times;</span>
+                    <h3>Links</h3>
+                    <button id="new-link-btn">Add a New Bookmark</button>
+                </div>
+                <!-- Contains list of added bookmarks and the form to add a new one-->
+                <div id="links-modal-content-body">
+                    <form autocomplete="off" id="new-bm-form">
+                        <input type="text" id="new-bm-name" placeholder="Name">
+                        <input type="text" id="new-bm-url" placeholder="URL">
+                        <button id="new-bm-submit">Submit</button>
+                    </form>
+                    <ul id="added-bm"></ul>
+                </div>
+            </div>            
+        </div>
+        <!-- Contains bookmarks, Google search, weather-->
+        <div id="header">
+            <div id="top-left">
+                <div id="links">
+                    <button id="links-btn">Links</button>
+                </div>
+                <div class="form" id="google-search" title="Search Google">
+                    <form method="GET" action="https://www.google.com/search?/" autocomplete="off" target="_blank">
+                        <!-- [REMINDER: Remove target="_blank" when this code is published]-->
+                        <input type="text" name="q" id="input-google-search"/>
+                    </form>
+                </div>
+            </div>
+            <div id="weather">
+                <div id="temperature"></div>
+                <div id="condition"></div>
+            </div>            
+        </div>
+        <!-- Contains time, greeting, main focus, and quote -->
+        <div id="center">
+            <br><br><br><br><br>
+            <div id="time"></div>
+            <div id="main-focus">
+                <div id="greeting">Greetings!</div>
+                <p id="main-focus-title">What is your main focus for today?</p>
+                <form id="focus-form" autocomplete="off">
+                    <input type="text" id="focus"/>
+                </form>
+                <div id="show-focus">
+                    <!-- This will remain hidden until the main focus is filled-->
+                    <span class="cb" id="show-focus-check" title="Check">&#9744;</span>
+                    <span class="close" id="show-focus-close" title="Clear">&times;</span>
+                    <span class="edit" id="show-focus-edit" title="Edit">&#9998;</span>
+                    <p id="show-focus-text"></p>
+                </div>
+            </div>
+            <div id="quote">
+                <br>
+                <div id="text"></div>
+                <div id="author"></div>
+            </div>
+        </div>
+        <!-- Contains Todo list -->
+        <div id="footer">
+            <div id="todo">
+                <button id="todo-btn">Todo</button>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript files for frontend -->
+    <script src="js/jquery.js"></script> 
+    <script src="js/bgimg.js"></script> 
+    <script src="js/time.js"></script> <!-- DONE -->
+    <script src="js/quotes.js"></script> <!-- DONE -->
+    <script src="js/weather.js"></script> <!-- DONE -->
+    <script src="js/main-focus.js"></script> <!-- DONE -->
+    <script src="js/links.js"></script>
+    <script src="js/todolist.js"></script>
+</body>
+<html>

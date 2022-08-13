@@ -1,0 +1,292 @@
+body, html{
+    height: 100%;
+    margin: 0;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+#bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+/* ELEMENTS THAT ARE USED EVERYWHERE ---------------------------------------------------------------------*/
+input[type=text] {
+    border: none;
+    border-bottom: 3px solid white;
+    background-color: rgba(0, 0, 0, 0); /* Makes the text input have transparent bg*/
+    color: white;
+    width: 300px;
+    height: 20px;
+}
+
+button {
+    border: none;
+    background-color: rgba(161, 115, 115, 0);
+    color: white;
+    text-shadow: 4px 4px 20px #000000;
+    font-size: 18px; 
+}
+
+button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* The Close Button */
+.close, .edit {
+    color: #aaaaaa;
+    float:right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cb {
+    color: #aaaaaa;
+    float:left;  
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.edit:hover,
+.edit:focus,
+.cb:hover,
+.cb:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+}
+
+.edit:hover, 
+.edit:focus {
+    color: green;
+}
+
+.cb:hover,
+.cb:focus {
+    color: white;
+}
+
+h3 {
+    font-size: 12px;
+}
+
+/* MODALS ----------------------------------------------------------------------------------------*/
+#todo-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+    bottom: 30px;
+    width: 20%;
+    height: 40%;
+    background-color: black;
+    border: solid 1px black;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.modal-content {
+    margin: auto;
+    padding: 0;
+}
+
+#todo-modal-content-body,
+#links-modal-content-body {
+    height: 30%;
+    width: 20%;
+    position:fixed;
+    font-size: 12px;
+    margin: 0;
+    text-align: left;
+    padding: 0;
+    overflow: auto;
+    z-index:1;
+}
+
+#links-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    width: 20%;
+    height: 40%;
+    top: 30px;
+    left: 0;
+    background-color: black;
+    border: solid 1px black;
+    padding: 0;
+    border-radius: 5px;
+}
+
+#new-link-btn,
+#new-bm-submit {
+    font-size: 14px;
+    margin:auto;
+}
+
+#new-link-btn:hover,
+#new-bm-submit:hover {
+    border-radius: 5px;
+    background-color: #aaaaaa;
+}
+
+#todo-text, 
+#new-bm-name, 
+#new-bm-url,
+input[type=text].editor-input {
+    border-bottom: none;
+    width: 260px;
+}
+
+p.todo-task{
+    text-indent: 15px;
+}
+
+.cb.todo-task, 
+.edit.todo-task,
+.close.todo-task,
+.close.bm,
+.edit.bm {
+    font-size: 12pt;
+}
+
+.cb.todo-task {
+    float:none;
+    display: inline-block;
+    position: absolute;
+    left:0;
+}
+
+.edit.todo-task, 
+.edit.bm {
+    float: none;
+    display: inline-block;
+    position:absolute;
+    right: 10px;
+}
+
+.close.todo-task,
+.close.bm {
+    float:none;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+a, a:visited {
+    text-indent: 5px;
+    color: white;
+}
+
+/* HEADER ----------------------------------------------------------------------------------------*/
+#header {
+    text-shadow: 4px 4px 20px #000000;  
+}
+
+/* Links and Google Search */
+#top-left {
+    display: grid;
+    grid-template-columns: repeat(2, 3%);
+    grid-column-gap: 20px;
+}
+
+#weather {
+    right: 0;
+    top: 0;
+    position: fixed;
+}
+
+#temperature {
+    font-size: 45px;
+}
+
+#input-google-search {
+    border-bottom: none;
+    background-image: url('img/search-icon.png');
+    background-repeat: no-repeat;
+    background-position: 7px 5px;
+    padding-left: 27px;
+}
+
+#input-google-search:hover, 
+#input-google-search:active {
+    border-bottom: 3px solid white;
+}
+
+/* CENTER ----------------------------------------------------------------------------------------*/
+#center {
+    text-align: center;
+    text-shadow: 2px 2px 40px #000000;  
+}
+
+#time {
+    font-size: 180px;
+}
+
+#greeting {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+#main-focus {
+    font-size: 24px;
+}
+
+#compliment {
+    font-size: 14px;
+}
+/* #text refers to the div with the ID for the quote text */
+#text {
+    font-size: 18px;
+    display: inline-block; /* The width of this div is the same as the width of the quote text*/
+}
+
+#show-focus {
+    width: 50%;
+    margin: auto; /* places the div in the center of screen */
+    text-align: center;
+}
+
+#show-focus-text {
+    text-decoration: none;
+}
+
+#quote {
+    margin: auto; /* places the div in the center of screen */
+}
+
+/* FOOTER ----------------------------------------------------------------------------------------*/
+#footer { 
+    text-shadow: 4px 4px 20px #000000;        
+}
+
+#focus {
+    height: 36px;
+    font-size: 25px;
+    width: 500px;
+}
+
+#todo {
+    right: 0;
+    position: fixed;
+    bottom: 0;
+}

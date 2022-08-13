@@ -1,0 +1,17 @@
+{
+    "manifest_version":2,
+    "name": "Momentum Clone",
+    "version": "1.0.0",
+    "description": "Clone of Momentum Dashboard Chrome Extension",
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "permissions": [
+        "geolocation"
+    ],
+    "icons": {
+        "128": "img/favicon 128x128.png",
+        "48": "img/favicon 48x48.png",
+        "16": "img/favicon 16x16.png"
+    }
+}
