@@ -1,0 +1,1 @@
+export const OPENWM_KEY = "08afe71d5a4bd48675b1731b032dec5d";

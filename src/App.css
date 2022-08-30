@@ -1,0 +1,203 @@
+body, html{
+  height: 100%;
+  margin: 0;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.BlankSpace {
+  height: 40px;
+}
+
+.TabSpace {
+  width: 100px;
+}
+
+p {
+  color: white;
+}
+
+input[type=text] {
+  border: none;
+  border-bottom: 3px solid white;
+  background-color: rgba(0, 0, 0, 0); /* Makes the text input have transparent bg*/
+  color: white;
+  width: 300px;
+  height: 20px;
+}
+
+button {
+  border: none;
+  background-color: rgba(161, 115, 115, 0);
+  color: white;
+  text-shadow: 4px 4px 20px #000000;
+  font-size: 18px; 
+}
+
+button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/************************/
+/*                      */
+/*        HEADER        */
+/*                      */
+/************************/
+#header-left {
+  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(2, 5%);
+  grid-column-gap: 30px;
+  text-align: center;
+}
+
+/************************/
+/*                      */
+/*        CENTER        */
+/*                      */
+/************************/ 
+#center {
+  text-align: center;
+}
+
+/************************/
+/*                      */
+/*        BOTTOM        */
+/*                      */
+/************************/ 
+
+/********************************/
+/*                              */
+/*          BACKGROUND          */
+/*                              */
+/********************************/
+#bg, #overlay {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+/*************************************/
+/*                                   */
+/*              WEATHER              */
+/*                                   */
+/*************************************/
+.Weather-Main {
+  right: 0;
+  top: 0;
+  position: fixed;
+}
+
+#temperature {
+  font-size: 48px;
+}
+
+/**********************************/
+/*                                */
+/*              TIME              */
+/*                                */
+/**********************************/
+#time {
+  font-size: 150px;
+}
+
+/***********************/
+/*                     */
+/*        QUOTE        */
+/*                     */
+/***********************/
+#quote {
+  text-align: center;
+}
+
+/*******************************/
+/*                             */
+/*        GOOGLE SEARCH        */
+/*                             */
+/*******************************/
+#input-google-search {
+  border-bottom: none;
+  background-image: url('components/img/search-icon.png');
+  background-repeat: no-repeat;
+  background-position: 7px 5px;
+  padding-left: 27px;
+  top: 20px;
+}
+
+#input-google-search:hover, 
+#input-google-search:active {
+    border-bottom: 3px solid white;
+}
+
+/***********************/
+/*                     */
+/*        LINKS        */
+/*                     */
+/***********************/
+
+
+/***********************/
+/*                     */
+/*        TODOS        */
+/*                     */
+/***********************/
+#todo-btn {
+  right: 0;
+  position: fixed;
+  bottom: 0;
+}
+
+/****************************************/
+/*                                      */
+/*              MAIN FOCUS              */
+/*                                      */
+/****************************************/
+#main-focus {
+  font-size: 24px;
+}
+
+
+/* the css that came with create-react-app */
+/*
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+*/
