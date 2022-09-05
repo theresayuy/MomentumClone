@@ -5,9 +5,9 @@ import Background from './components/bg';
 import Weather from './components/weather';
 import Clock from './components/clock';
 import MainFocus from './components/mainfocus';
-import Quote from './components/quotes';
-import {LinksButton} from './components/links';
-import {TodoButton} from './components/todolist';
+import Quote from './components/quote';
+// import Links from './components/links';
+// import TodoList from './components/todolist';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Background />
       <div id="header">
         <div id="header-left">
-          <LinksButton /><GoogleSearch />
+          <GoogleSearch />
         </div>
         <Weather />
       </div>
@@ -24,7 +24,7 @@ function App() {
         <MainFocus />
       </div>
       <div id="bottom">
-        <Quote /><TodoButton />
+        <Quote />
       </div>
     </div>
   );

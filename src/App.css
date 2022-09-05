@@ -4,18 +4,11 @@ body, html{
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
+  /* Text cannot be selected or highlighted with mouse */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.BlankSpace {
-  height: 40px;
-}
-
-.TabSpace {
-  width: 100px;
 }
 
 p {
@@ -25,15 +18,37 @@ p {
 input[type=text] {
   border: none;
   border-bottom: 3px solid white;
-  background-color: rgba(0, 0, 0, 0); /* Makes the text input have transparent bg*/
+  background-color: rgba(0, 0, 0, 0); /* transparent bg*/
   color: white;
-  width: 300px;
-  height: 20px;
+  width: 400px;
+  height: 40px;
+  text-align: center;
+  font-size: 36px;
 }
+
+input[type=text]:focus {
+  outline: none;
+}
+
+/***********************/
+/*                     */
+/*        SPACES       */
+/*                     */
+/***********************/
+.TabSpan {
+  margin-right:1.5em; 
+  display:inline-block
+}
+
+/**************************************************/
+/*                                                */
+/*        TOP LEFT AND BOTTOM RIGHT BUTTONS       */
+/*                                                */
+/**************************************************/
 
 button {
   border: none;
-  background-color: rgba(161, 115, 115, 0);
+  background-color: rgba(0, 0, 0, 0); /* transparent bg */
   color: white;
   text-shadow: 4px 4px 20px #000000;
   font-size: 18px; 
@@ -43,6 +58,61 @@ button:hover {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/******************************************************/
+/*                                                    */
+/*        UTILITY BUTTONS (CHECKBOX, PENCIL, X)       */
+/*                                                    */
+/******************************************************/
+
+.Close-Btn, .Edit-Btn {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+
+.CB-Btn {
+  color: rgba(255, 255, 255, 0.7); 
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.Close-Btn:hover,
+.Close-Btn:focus,
+.Edit-Btn:hover,
+.Edit-Btn:focus,
+.CB-Btn:hover,
+.CB-Btn:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.Close-Btn:hover,
+.Close-Btn:focus {
+    color: red;
+}
+
+.Edit-Btn:hover, 
+.Edit-Btn:focus {
+    color: #7CFC00;
+}
+
+.CB-Btn:hover,
+.CB-Btn:focus {
+    color: white;
+}
+
+/**************************************/
+/*                                    */
+/*        MODALS... IN GENERAL        */
+/*                                    */
+/**************************************/
+.Modal-Hidden {
+  display: none;
+}
+
+
 
 /************************/
 /*                      */
@@ -88,13 +158,13 @@ button:hover {
   font-size: 48px;
 }
 
-/**********************************/
-/*                                */
-/*              TIME              */
-/*                                */
-/**********************************/
+/***********************************/
+/*                                 */
+/*              CLOCK              */
+/*                                 */
+/***********************************/
 #time {
-  font-size: 150px;
+  font-size: 200px;
 }
 
 /***********************/
@@ -106,6 +176,11 @@ button:hover {
   text-align: center;
 }
 
+#quote-text {
+  font-size: 18px;
+  mix-blend-mode: screen;
+}
+
 /*******************************/
 /*                             */
 /*        GOOGLE SEARCH        */
@@ -113,16 +188,32 @@ button:hover {
 /*******************************/
 #input-google-search {
   border-bottom: none;
+  background-image: url('components/img/search-icon-inactive.png');
+  background-repeat: no-repeat;
+  background-position: 7px 5px;
+  padding-left: 27px;
+  top: 20px;
+  height: 24px;
+  text-align: left;
+  font-size: 12px;
+  width: 250px;
+}
+
+#input-google-search:hover {
+  border-bottom: 3px solid rgba(255, 255, 255, 0.7);
+}
+
+#input-google-search-active {
+  border-bottom: 3px solid white;
   background-image: url('components/img/search-icon.png');
   background-repeat: no-repeat;
   background-position: 7px 5px;
   padding-left: 27px;
   top: 20px;
-}
-
-#input-google-search:hover, 
-#input-google-search:active {
-    border-bottom: 3px solid white;
+  height: 24px;
+  text-align: left;
+  font-size: 12px;
+  width: 250px;
 }
 
 /***********************/
@@ -132,11 +223,11 @@ button:hover {
 /***********************/
 
 
-/***********************/
-/*                     */
-/*        TODOS        */
-/*                     */
-/***********************/
+/***************************/
+/*                         */
+/*        TODO LIST        */
+/*                         */
+/***************************/
 #todo-btn {
   right: 0;
   position: fixed;
@@ -152,6 +243,13 @@ button:hover {
   font-size: 24px;
 }
 
+#show-focus-0 {
+  display: none;
+} /* this is for when the page first loads */
+
+#greeting {
+  font-size: 60px;
+}
 
 /* the css that came with create-react-app */
 /*

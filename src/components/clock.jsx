@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../App.css';
 
 // puts a zero before the time if it is before 10 o'clock
@@ -13,26 +13,23 @@ function getCurrentTime() {
     return `${hours}:${mins}`;
 }
 
-class Clock extends React.Component {
-    constructor() {
-        super();
-        this.state = {time: getCurrentTime()}
-    }
+function Clock() {
+    const [clockState, setClockState] = useState(0);
+    useEffect(() => {
+        let clockUpdater = setTimeout(() => {            
+            setClockState(clockState + 1);
+        }, 1000); // re-render every second to update time properly
 
-    render() {
-        setInterval(() => {            
-            this.setState((_) => {
-                return {time: getCurrentTime()};
-            });
-        }, 1000); // change the time every second
+        return function cleanUp() {
+            clearTimeout(clockUpdater);
+        }
+    });
 
-        return(
-            <div className="Clock">
-                <div id="time">{this.state.time}</div>
-            </div>   
-        );
-    }
-
+    return(
+        <div className="Clock-Main">
+            <div id="time">{getCurrentTime()}</div>
+        </div>   
+    );
 }
 
 export default Clock;

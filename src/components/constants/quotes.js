@@ -1,4 +1,8 @@
-export const quotes = [
+/**
+ * Quotes from type.fit/api/quotes
+ */
+
+const QUOTES = [
   {
     text: "Genius is one percent inspiration and ninety-nine percent perspiration.",
     author: "Thomas Edison"
@@ -6572,3 +6576,5 @@ export const quotes = [
     author: "Tom Jackson"
   }
 ];
+
+export default QUOTES;
