@@ -1,5 +1,5 @@
 import '../App.css';
-import React, {useState} from 'react';
+import React from 'react';
 import $ from 'jquery';
 import API_KEYS from './constants/apikey';
 import useLocalStorage from './helpers/local-storage';
@@ -7,7 +7,6 @@ import useLocalStorage from './helpers/local-storage';
 const LS_KEY = "weatherInfo";
 
 function Weather() {
-    const [weatherState, renderWeather] = useState(0);
     const [weatherInfo, storeInfo] = useLocalStorage(LS_KEY, {
         temperature: `0°C`,
         condition: "nothing"
@@ -36,11 +35,7 @@ function Weather() {
     });
 
     return(
-        <div className="Weather-Main"
-            onMouseOver={() => {
-                renderWeather(weatherState + 1);
-            }}
-        >
+        <div className="Weather-Main">
             <div id="temperature">{weatherInfo.temperature}</div>
             <div id="condition">{weatherInfo.condition}</div>
         </div> 
