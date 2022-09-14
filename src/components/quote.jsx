@@ -20,18 +20,14 @@ function getRandomQuote() {
 }
 
 function Quote() {
-    const [quoteState, setQuoteState] = useState(0);
+    const [quoteState, setQuoteState] = useState({
+        authorCSSDisplay: "none"
+    });
     const [storedQuote, setStoredQuote] = useLocalStorage("quoteData", {
         latestDate: new Date().toDateString(),
         latestQuote: getDeepCopy(getRandomQuote())
     });
-    const AUTHOR_CSS = {
-        display: "none",
-        fontSize: "14px",
-        color: "rgba(255, 255, 255, 0.8)",
-        mixBlendMode: "screen"
-    };
-    const BREAKS = [<br></br>, <br></br>];
+    const WIN_W = $(window).width();
 
     if (storedQuote.latestDate !== new Date().toDateString()) {
         setStoredQuote({
@@ -41,25 +37,35 @@ function Quote() {
     } // quote change only once a day
 
     return (
-        <div className="Quote-Main" id="quote">
-            {BREAKS}
+        <div className="Quote-Main" id="quote"
+            onMouseOver={() => {
+                setQuoteState({
+                    authorCSSDisplay: "initial"
+                });
+            }}
+            onMouseOut={() => {
+                setQuoteState({
+                    authorCSSDisplay: "none"
+                });
+            }}
+            style={{
+                left: `${(WIN_W / 2) - (5 * storedQuote.latestQuote[0].length)}px`,
+                right: `${(WIN_W / 2) - (5 * storedQuote.latestQuote[0].length)}px`
+            }}
+        >
+            <br></br>
+            <br></br>
             <span 
                 id="quote-text" 
-                onMouseOver={() => {
-                    $("#quote-author").fadeIn(1000);
-                    setQuoteState(quoteState + 1);
-                }}
-                onMouseOut={() => {
-                    $("#quote-author").fadeOut(1000);
-                    setQuoteState(quoteState + 1);
-                }}
             >
                 {storedQuote.latestQuote[0]}
             </span>
-            {BREAKS}
+            <br></br>
             <span
                 id="quote-author"
-                style={AUTHOR_CSS}
+                style={{
+                    display: quoteState.authorCSSDisplay
+                }}
             >
                 {storedQuote.latestQuote[1]}
             </span>

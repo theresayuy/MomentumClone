@@ -3,75 +3,74 @@ import $ from 'jquery';
 import '../App.css';
 import Star from './star';
 import useLocalStorage from './helpers/local-storage';
+import { getRandomValueFromArray } from './helpers/str-arr-utils';
 import PICSUM_IDS from './constants/picsum-gallery-ids';
 
+const ALPHA = [0.3, 0.28, 0.26, 0.24, 0.22, 0.2, 
+    0.18, 0.16, 0.14, 0.12, 0.1];
+const Y_DIR = [-1, 1, -1, 1]; /* determines if star 
+    initially travels upwards or downwards. The values are included several
+    times, even though theres only 2 unique values, bc an array of length 2
+    gets the value stored in index 0 chosen most of the time by
+    getRandomValueFromArray function. 
+*/
+
 function getRandomId() {
-    return PICSUM_IDS[Math.floor(Math.random() * (PICSUM_IDS.length - 1))];
+    return getRandomValueFromArray(PICSUM_IDS);
 } // get random ID of an image stored on lorem picsum.
 
 function Background() {
     const [bgImgData, storeBGImgData] = useLocalStorage("bgImgData", {
-            latestDate: new Date().toDateString(),
-            latestID: getRandomId()
-        }
-    );
-    const [backgroundState, renderBackground] = useState(0);
-    const WIN_W = $(window).width();
-    const WIN_H = $(window).height();
+        latestDate: new Date().toDateString(),
+        latestID: getRandomId(),
+        author: 0,
+        unsplashURL: "https://unsplash.com/"
+    });
+    const [bgState, renderBackground] = useState({
+        winW: window.innerWidth, winH: window.innerHeight
+    });
+    let style = {backgroundImage: ""};
+    let stars = [];
 
-    if (bgImgData.latestDate !== new Date().toDateString()) {
-        storeBGImgData({
-            latestDate: new Date().toDateString(),
-            latestID: getRandomId()
+    if (bgImgData.latestDate !== new Date().toDateString() || 
+        bgImgData.author === 0) 
+    {
+        const newID = getRandomId();        
+        const baseURL = `https://picsum.photos/id/${newID}/info`;        
+        $.getJSON(baseURL, function(result) {
+            storeBGImgData({
+                latestDate: new Date().toDateString(),
+                latestID: newID,
+                author: result.author,
+                unsplashURL: result.url
+            });
         });
-    } // enables BG img to only be changed once a day
+    } // background image will change only once a day
+    
+    style.backgroundImage = `url(https://picsum.photos/id/${
+        bgImgData.latestID}/${bgState.winW}/${
+            bgState.winH})`; // set URL of the background image
 
-    const BG_CSS = {
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        position: "absolute",
-        top: "0",
-        left: "0",
-        height: "100%",
-        width: "100%",
-        zIndex: "-1",
-        backgroundImage: `url(https://picsum.photos/id/${
-            bgImgData.latestID}/${WIN_W}/${WIN_H})`
-    };
-    const OVERLAY_CSS = {
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        position: "absolute",
-        top: "0",
-        left: "0",
-        height: "100%",
-        width: "100%",
-        zIndex: "-1",
-        backgroundColor: "rgba(0, 0, 0, 0.2)"
-    };
-    const STARS = [];
-    const ALPHA = [0.3, 0.28, 0.26, 0.24, 0.22, 0.2, 
-        0.18, 0.16, 0.14, 0.12, 0.1];
-
-    for (let i = 0; i < (WIN_W * 0.2); i++) {
-        STARS.push(<Star
-            id={`overlay-star-${i}`}
-            left={Math.random() * WIN_W}
-            top={Math.random() * WIN_H}
-            timeChange={100 + Math.random() * 400}
-            alpha={ALPHA[Math.floor(Math.random() * (ALPHA.length - 1))]}
+    for (let i = 0; i < (bgState.winW * 0.2); i++) {
+        stars.push(<Star
+            id={`bg-star-${i}`}
+            left={Math.random() * bgState.winW}
+            top={Math.random() * bgState.winH}
+            timeChange={50 + Math.random() * 350}
+            alpha={getRandomValueFromArray(ALPHA)}
+            initialYDir={getRandomValueFromArray(Y_DIR)}
         />);
     } // many stars will be added to background
     
     return (
-        <div id="bg" className="Background-Main" style={BG_CSS}
-            onResize={() => {
-                renderBackground(backgroundState + 1); 
+        <div id="bg" className="Background-Main" style={style}
+            onResize={() => {                
+                renderBackground({
+                    winH: window.innerHeight, winW: window.innerWidth
+                }); 
             }} // add or remove stars based on new window size
         >
-            <div id="overlay" style={OVERLAY_CSS}>{STARS}</div>
+            {stars}
         </div>
     );
 }

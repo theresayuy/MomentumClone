@@ -1,82 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../App.css';
-import useLocalStorage from './helpers/local-storage';
-import { getDeepCopy } from './helpers/str-arr-utils';
-import { Modal, ModalButton, ModalListItem, getListItemsBeforeMount } from './modal';
-
-const LS_KEY = "savedBMs"
-
-function addBM(event, index, getBMState, renderBM, getStoredBMs, updateStoredBMs) {
-    const listItems = getDeepCopy(getBMState().modalListItems);
-    const storageItems = getDeepCopy(getStoredBMs());
-
-    if (listItems.length === storageItems.length) {
-        const NEW_STORED_ITEM = {
-            id: index,
-            label: "",
-            url: "", 
-            editFormHidden: true
-        };
-        const NEW_LIST_ITEM = (<ModalListItem 
-            desc="bookmark"
-            itemInfo={storageItems[index]}
-            getParentState={getBMState}
-            renderParent={renderBM}
-            getStoredItems={getStoredBMs}
-            updateLS={updateStoredBMs}
-        />);
-
-        if (index === listItems.length) {
-            storageItems.push(NEW_STORED_ITEM);
-            updateStoredBMs(storageItems);
-            listItems.push(NEW_LIST_ITEM);
-            renderBM({
-                modalListItems: listItems,
-                classModal: getBMState().classModal
-            });
-        } else if (index < listItems.length) {
-            storageItems[index] = NEW_STORED_ITEM;
-            updateStoredBMs(storageItems);
-            listItems[index] = NEW_LIST_ITEM;
-            renderBM({
-                modalListItems: listItems,
-                classModal: getBMState().classModal
-            });
-        }
-    }
-
-    event.preventDefault();
-} // Add bookmark as a ModalListItem to Modal and update localStorage
-
-function AddNewBMForm(props) {
-
-}
-
-function EditBMForm(props) {
-
-}
+import { getListItemsBeforeMount } from './helpers/modal-utils';
+import Modal from './modal';
+import ModalButton from './modalbutton';
 
 function Links() {
-    const [items, setItems] = useLocalStorage(LS_KEY, []);
     const [bmState, renderBM] = useState({
-        modalListItems: (items !== []) ? 
-                        getListItemsBeforeMount(
-                            "link", // desc
-                            () => {
-                                return bmState;
-                            }, // getParentState
-                            (val) => {
-                                renderBM(val);
-                            }, // renderParent
-                            () => {
-                                return items;
-                            }, // getStoredItems
-                            (val) => {
-                                setItems(val);
-                            } // updateLS
-                        ) : [],
+        modalListItems: [],
         classModal: "Modal-Hidden"
     });
+
+    const setState = (newState, index) => {
+        if (newState.sqlData.length > bmState.sqlData.length &&
+            index === bmState.sqlData.length) 
+        {
+            axios.post("http://localhost:3000/tasks", newState.sqlData[index]);
+        } else if (newState.sqlData.length === bmState.sqlData.length && 
+            index < bmState.sqlData.length) 
+        {
+            axios.put("http://localhost:3000/tasks", newState.sqlData[index]);
+        }
+        renderBM(newState);
+    } // index parameter is the index of sqlData that got changed
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/bookmarks").then((res) => {
+            renderBM({
+                sqlData: res.data,
+                modalListItems: getListItemsBeforeMount(
+                    "link", 
+                    () => {
+                        return bmState
+                    }, 
+                    setState,
+                    res.data
+                ),
+                classModal: bmState.classModal
+            });
+        });
+    }, []); // update list of bookmarks right after mount
 
     return (
         <div className="BMs">
@@ -85,29 +48,18 @@ function Links() {
                 getParentState={() => {
                     return bmState;
                 }}
-                renderParent={(val) => {
-                    renderBM(val);
-                }}
-                updateLS={(val) => {
-                    setItems(val);
-                }}
-                getStoredItems={() => {
-                    return items;
-                }} 
+                renderParent={setState}
             />
-            <Modal 
+            <Modal
                 desc="link"
                 modalContentHead="Bookmarks"
                 getParentState={() => {
                     return bmState;
                 }}
-                renderParent={(val) => {
-                    renderBM(val);
-                }}
+                renderParent={setState}
             />
         </div>
     );
 }
 
 export default Links;
-export { addBM, AddNewBMForm, EditBMForm };

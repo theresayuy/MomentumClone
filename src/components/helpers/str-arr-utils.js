@@ -1,4 +1,4 @@
-import {ENCRYPT1, ENCRYPT0} from "../constants/encrypt-standards";
+import {ENCRYPT1, ENCRYPT0} from "../constants/encrypt-methods";
 
 export const getDeepCopy = function(toCopy) {
     return ((toCopy.toString() === toCopy ? " " : [" "]).concat(toCopy)).slice(1);
@@ -31,3 +31,16 @@ export const encryptStr = function(toEncrypt, standard) {
     }); 
     return (" " + result).slice(1);
 }
+
+export const formatStrMethod1 = function(str, maxlen) {
+    let result = str;
+    if (str.length > maxlen) {
+        result = `${str.slice(0, maxlen)}...`
+    }
+
+    return result;
+}
+
+export const getRandomValueFromArray = function(arr) {
+    return arr[Math.floor(Math.random() * (arr.length - 1))];
+} // returns the value stored from a random index in arr

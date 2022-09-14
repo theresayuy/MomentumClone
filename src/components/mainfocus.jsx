@@ -11,23 +11,6 @@ import UTIL_BTN from './constants/util-buttons';
 
 const MAX_STR_LEN = 75;
 
-function formatFocusText(textToFormat) {
-    let result = "";
-    const MAX_LOOPS = Math.floor(textToFormat.length / MAX_STR_LEN);
-
-    if (MAX_LOOPS === 0) {
-        return getDeepCopy(textToFormat);
-    } else {
-        for (let i = 0; i < MAX_LOOPS; i++) {
-            result += `${textToFormat.slice(
-                    i * MAX_STR_LEN, (i + 1) * MAX_STR_LEN
-                )}\n` ;
-        }
-
-        return `${result}${textToFormat.slice(MAX_LOOPS * MAX_STR_LEN)}`;
-    }
-}
-
 // lets user change their main focus
 function modifyFocus(mfState, renderMF) {
     const focusForm = $(`#${mfState.idFF}`)[0];
@@ -53,7 +36,6 @@ function setFocus(event, mfState, renderMF) {
     const focusForm = $(`#${mfState.idFF}`)[0];
 
     if (FI_VAL.trim().length !== 0) {
-        const focusText = formatFocusText(FI_VAL);
         $(`#${mfState.idSF}`).fadeIn(2000);        
         $(`#${mfState.idSF}`).show();
         $(focusForm).fadeOut(1000);             
@@ -65,7 +47,7 @@ function setFocus(event, mfState, renderMF) {
             idSF: "show-focus",
             showFocusCheck: UTIL_BTN.EBB,
             showFocusCheckTitle: "Check",
-            showFocusText: getDeepCopy(focusText),
+            showFocusText: getDeepCopy(FI_VAL),
             cssSFT: {
                 textDecoration: "none",
                 fontSize: "36px"
@@ -137,7 +119,7 @@ function MainFocus() {
     });
 
     return (
-        <div id="main-focus" className="Main-Focus-0">
+        <div id="main-focus" className="Main-Focus">
             <div id={mfState.idGM}>Hello!</div>
             <br></br>
             <div 
@@ -148,7 +130,7 @@ function MainFocus() {
             </div>
             <form 
                 id={mfState.idFF} 
-                autocomplete="off"
+                autoComplete="off"
                 style={mfState.cssFF} 
                 onSubmit={(event) => {
                     setFocus(event, mfState, (oldMFState, vals) => {
@@ -208,14 +190,12 @@ function MainFocus() {
                 >
                     {mfState.showFocusCheck}
                 </span>
-                <span className="TabSpan">{"\u0009"}</span>
                 <span 
                     id={mfState.idSFT}
                     style={mfState.cssSFT}
                 >
                     {mfState.showFocusText}
                 </span>
-                <span className="TabSpan">{"\u0009"}</span>
                 <span 
                     className="Edit-Btn" 
                     id="show-focus-edit" 

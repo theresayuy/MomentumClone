@@ -1,40 +1,49 @@
 import React, {useState, useEffect} from 'react';
 import {getMin, getMax} from './helpers/number-utils';
-import $ from 'jquery';
-
-let winW = $(window).width();
-let winH = $(window).height();
-const MAX_LCHANGE = (1 / 1366) * winW;
 
 function Star(props) {
-    winH = $(window).height();
-    winW = $(window).width();
-
+    /*
+        props = {
+            left: 0,
+            top: 0,
+            alpha: 0,
+            timeChange: 100,
+            initialYDir: -1 || 1
+        }
+    */
+    let winW = window.innerWidth;
+    let winH = window.innerHeight;
     const [starState, setStarState] = useState({
         leftChange: 0,
         leftAdd: (0.1 / 1366) * winW,
         topChange: 0,
         topAdd: (1 / 667) * winH,
-        alpha: props.alpha
+        alpha: props.alpha,
     });
     const starCSS = {
-        position: "absolute",
-        left: `${getMax(0, getMin(props.left + starState.leftChange, winW))}px`,
-        top: `${getMax(0, getMin(winH, props.top + starState.topChange))}px`,
+        left: `${getMax(0, getMin(props.left + starState.leftChange, 
+            winW))}px`,
+        top: `${getMax(0, getMin(winH, 
+                props.top + (starState.topChange * props.initialYDir)
+            ))}px`,
         fontSize: `${winH * 0.024}px`,
         color: `rgba(255, 255, 255, ${starState.alpha})`,
     };
+    let maxLChange = (1 / 1366) * winW;
 
     useEffect(() => {
         const updateAlphaAndPosition = setTimeout(() => {
             setStarState({
                 leftChange: starState.leftChange + starState.leftAdd,
-                leftAdd: ((starState.leftChange >= MAX_LCHANGE) ? -(0.1 / 1366) * winW : 
-                        (starState.leftChange <= -MAX_LCHANGE) ? (0.1 / 1366) * winW : 
-                        starState.leftAdd),
-                topChange: starState.topChange - starState.topAdd,
-                topAdd: ((props.top + starState.topChange) <= 0) ? -(1 / 667) * winH : 
-                        ((props.top + starState.topChange) >= winH) ? (1 / 667) * winH : 
+                leftAdd: ((starState.leftChange >= maxLChange) ? 
+                        -(0.1 / 1366) * winW : 
+                        (starState.leftChange <= -maxLChange) ? 
+                        (0.1 / 1366) * winW : starState.leftAdd),
+                topChange: starState.topChange + starState.topAdd,
+                topAdd: ((props.top + (starState.topChange * props.initialYDir)) <= 0) 
+                        ? -(1 / 667) * winH : 
+                        ((props.top + (starState.topChange * props.initialYDir)) >= 
+                        winH) ? (1 / 667) * winH : 
                         starState.topAdd,
                 alpha: (starState.alpha === 0.3) ? 0.28 : 
                         (starState.alpha === 0.28) ? 0.26 :
@@ -58,7 +67,7 @@ function Star(props) {
 
     return (
         <div 
-            className="OverlayStar"
+            className="Background-Star"
             id={props.id} 
             style={starCSS}
         >

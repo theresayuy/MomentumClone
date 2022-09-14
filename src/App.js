@@ -2,12 +2,13 @@ import React from 'react';
 import './App.css';
 import GoogleSearch from './components/googlesearch';
 import Background from './components/bg';
+import BackgroundInfo from './components/bg-info';
 import Weather from './components/weather';
 import Clock from './components/clock';
 import MainFocus from './components/mainfocus';
 import Quote from './components/quote';
-// import Links from './components/links';
-// import TodoList from './components/todolist';
+import Links from './components/links';
+import TodoList from './components/todolist';
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
       </div>
       <div id="bottom">
         <Quote />
+        <TodoList />
+        <BackgroundInfo />
       </div>
     </div>
   );

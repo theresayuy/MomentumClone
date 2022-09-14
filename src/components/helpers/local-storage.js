@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-// hook to initialize a key and its value to window.localStorage
+// hook to set a key-value pair to window.localStorage
 function useLocalStorage(keyName, defaultValue) {
     const [storedVal, setStoredVal] = useState(() => {
         try {
