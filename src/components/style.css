@@ -1,0 +1,440 @@
+/*******************************************************/
+/*                                                     */
+/*        ELEMENTS, UNSPECIFIED BY CLASSES OR ID       */
+/*                                                     */
+/*******************************************************/
+
+input[type=text] {
+  border: none; /* text inputs in this program either only 
+                  have bottom border or no border at all */
+  color: white;
+}
+  
+input[type=text]:focus {
+  outline: none; /* no black outline when you are typing */
+}
+
+/****************************/
+/*                          */
+/*        BACKGROUND        */
+/*                          */
+/****************************/
+#bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+  
+div.BackgroundInfo-Main {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  font-size: 12px;
+  text-shadow: 5px 5px 20px #000000;
+}
+
+div.BackgroundInfo-Title {
+  color: rgba(255, 255, 255, 0.8);
+  padding-bottom: 5px;
+  padding-left: 5px;
+}
+
+button.BackgroundInfo-Credits {
+  color: rgba(255, 255, 255, 0.8);
+  animation: FadeOut-FromWhite 1s linear;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0); /* transparent background */
+  border: none;
+  text-shadow: 2px 2px 12px #000000;
+}
+
+button.BackgroundInfo-Credits:hover {
+  color: white;
+  animation: FadeIn-ToWhite 0.5s linear;
+}
+
+div.Background-Star {
+  position: absolute;
+}
+
+/******************************************************/
+/*                                                    */
+/*        UTILITY BUTTONS (CHECKBOX, PENCIL, X)       */
+/*                                                    */
+/******************************************************/
+
+.Close-Btn, .Edit-Btn, .CB-Btn {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.Close-Btn:hover,
+.Close-Btn:focus,
+.Edit-Btn:hover,
+.Edit-Btn:focus,
+.CB-Btn:hover,
+.CB-Btn:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.Close-Btn:hover,
+.Close-Btn:focus {
+  color: red;
+}
+
+.Edit-Btn:hover, 
+.Edit-Btn:focus {
+  color: #7CFC00;
+}
+
+.CB-Btn:hover,
+.CB-Btn:focus {
+  color: white;
+}
+
+/*************************************/
+/*                                   */
+/*              WEATHER              */
+/*                                   */
+/*************************************/
+.Weather-Main {
+  right: 10px;
+  top: 10px;
+  position: fixed;
+  color:rgba(255, 255, 255, 0.8);
+  animation: FadeOut-FromWhite 1s linear;
+  text-shadow: 5px 5px 35px rgba(0, 0, 0, 0.5);
+  text-align: right;
+}
+
+.Weather-Main:hover {
+  color: white;
+  animation: FadeIn-ToWhite 1s linear;
+}
+
+#temperature {
+  font-size: 30px;
+}
+
+#condition {
+  font-size: 14px;
+}
+
+/***********************************/
+/*                                 */
+/*              CLOCK              */
+/*                                 */
+/***********************************/
+#time {
+  font-size: 200px;
+  text-shadow: 10px 10px 100px #000000;
+}
+
+.Change-Time-System {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 12px 8px 12px 8px;
+  animation: Change-Time-System-OnMouseLeave 0.5s linear;
+  font-size: 16px;
+  font-weight: bolder;
+  border-radius: 50%;
+}
+
+.Change-Time-System:hover {
+  color: white;
+  animation: Change-Time-System-Hover 0.5s linear;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.Tooltip-Content {
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 14px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 52%;
+  left: 65%;
+  margin-left: -60px;
+}
+
+/***********************/
+/*                     */
+/*        QUOTE        */
+/*                     */
+/***********************/
+.Quote-Main {
+  text-align: center;
+  position: fixed;
+  bottom: 10px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#quote-text {
+  font-size: 18px;
+  text-shadow: 4px 4px 20px #000000;
+}
+
+#quote-author {
+  font-size: 14px;
+  text-shadow: 3px 3px 20px #000000;
+}
+
+/*******************************/
+/*                             */
+/*        GOOGLE SEARCH        */
+/*                             */
+/*******************************/
+input[id*="input-google-search"] {
+  background-color:rgba(0, 0, 0, 0); /* transparent */
+  background-repeat: no-repeat;
+  background-position: 7px 8px;
+  padding-left: 27px;
+  top: 20px;
+  height: 30px;
+  text-align: left;
+  font-size: 12px;
+  width: 250px;
+}
+
+#input-google-search {
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+  background-image: url('../assets/search-icon-inactive.png');    
+}
+
+#input-google-search:hover {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+}
+
+#input-google-search-active {
+  border-bottom: 2px solid white;
+  background-image: url('../assets/search-icon.png');   
+}
+
+input[id*="input-google-search"]::placeholder,
+input[id*="input-google-search"]::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/************************/
+/*                      */
+/*        MODALS        */
+/*                      */
+/************************/
+*[class*="-Hidden"], 
+li.Deleted-List-Item {
+  display: none;
+}
+
+input[type=text].Edit-Item-Form-Input,
+input[type=text].Add-New-Item-Input {
+  border-bottom: none;
+  width: 260px;
+  background-color: rgba(25, 25, 25, 1);
+}
+
+.Modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* not sure if this is useful w/out CSS flexbox */
+  width: 20%;
+  height: 40%;
+  background-color: black;
+  border: solid 1px black;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.Modal-Content {
+  margin: auto;
+  padding: 0;
+}
+
+.Modal-Content-Head {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.Modal-Title {
+  font-weight: bold;
+  font-size: 16px;
+  padding-left: 2px;
+}
+
+span[id*="modal-content-close"] {
+  font-size: 12pt;
+  right: 10px;
+  position: fixed;
+}
+
+.Modal-Content-Body {
+  height: 30%;
+  width: 20%;
+  position: fixed;
+  margin: 0;
+  text-align: left;
+  padding: 0;
+  overflow: auto;
+  z-index:1;
+}
+
+span[class*="Displayed-List-Item"] span {
+  font-size: 15px;
+  float: none;
+  display: inline-block;
+}
+
+ul[id*="-modal-ul"] {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+span.Modal-List-Item-Content {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+span[id*="-list-item-cb-"],
+span[id*="-list-item-edit-"],
+span[id*="-list-item-clear-"] {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+button.Modal-Button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0); /* transparent bg */
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 4px 4px 20px #000000;
+  font-size: 18px;
+  padding: 5px 5px 5px 5px;
+}
+
+button.Modal-Button:hover {
+  cursor: pointer;
+  color: white;
+  animation: FadeIn-ToWhite 1s linear;
+}
+
+/***********************/
+/*                     */
+/*        LINKS        */
+/*                     */
+/***********************/
+#link-modal {
+  left: 0;
+  top: 30px;
+}
+
+a.BM-Anchor, 
+a.BM-Anchor:visited {
+  text-indent: 5px;
+  color: white;
+}
+
+/***************************/
+/*                         */
+/*        TODO LIST        */
+/*                         */
+/***************************/
+#task-modal-btn {
+  right: 0;
+  position: fixed;
+  bottom: 0;
+}
+
+#task-modal {
+  right: 0;
+  bottom: 30px;
+}
+
+span[id~=task-list-item-content] {
+  text-indent: 15px;
+} /* indent the label for each task */
+
+/****************************************/
+/*                                      */
+/*              MAIN FOCUS              */
+/*                                      */
+/****************************************/
+
+#focus {
+  width: 450px;
+  height: 40px;
+  text-align: center;
+  font-size: 36px;
+  border-bottom: 3px solid white;
+  background-color:rgba(0, 0, 0, 0); /* transparent */
+} /* this is a text input for a form */
+
+#show-focus-0 {
+  display: none;
+} /* hides the show focus text, check box, 
+pencil, etc. when first loaded */
+
+#greeting {
+  font-size: 60px;
+}
+
+#show-focus-text {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/****************************/
+/*                          */
+/*        ANIMATIONS        */
+/*                          */
+/****************************/
+@keyframes FadeIn-ToWhite {
+  from {
+    color: rgba(255, 255, 255, 0.8);
+  } 
+  to {
+    color: white;
+  }
+}
+
+@keyframes FadeOut-FromWhite {
+  from {
+    color: white;
+  }
+  to {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes Change-Time-System-Hover {
+  from {
+    background-color:rgba(255, 255, 255, 0);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+}
+
+@keyframes Change-Time-System-OnMouseLeave {
+  from {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+  to {
+    background-color:rgba(255, 255, 255, 0);
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
