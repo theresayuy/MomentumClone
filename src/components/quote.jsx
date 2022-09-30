@@ -13,7 +13,7 @@ function getRandomQuote() {
 
     return [
         `"${result.text}"`,
-        `- ${result.author}`
+        `- ${(result.author === null) ? `Unknown` : result.author}`
     ];
 }
 
@@ -27,7 +27,8 @@ function Quote() {
     });
     const WIN_W = window.innerWidth;
 
-    if (storedQuote.latestDate !== new Date().toDateString()) {
+    if (storedQuote.latestDate !== new Date().toDateString() &&
+        new Date().getHours() >= 4) {
         setStoredQuote({
             latestDate: new Date().toDateString(),
             latestQuote: getDeepCopy(getRandomQuote())

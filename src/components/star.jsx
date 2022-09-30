@@ -2,16 +2,21 @@ import React, {useState, useEffect} from 'react';
 import './style.css';
 import { getMin, getMax } from './helpers';
 
+const MY_WIN_DIM = {
+    W: 1366,
+    H: 667
+};
+
 function getNewTopAdd(props, starState, winH) {
     // change direction if star reaches the very top or bottom
     if (getMax(0, getMin(winH, 
         props.top + starState.topChange * props.initialYDir
     )) === 0) {
-        return props.initialYDir * (1 / 667) * winH;
+        return props.initialYDir * (1 / MY_WIN_DIM.H) * winH;
     } else if (getMax(0, getMin(winH, 
         props.top + starState.topChange * props.initialYDir
     )) === winH) {
-        return props.initialYDir * -1 * (1 / 667) * winH;
+        return props.initialYDir * -1 * (1 / MY_WIN_DIM.H) * winH;
     }
 
     return starState.topAdd; // star can keep travelling in same direction
@@ -20,20 +25,21 @@ function getNewTopAdd(props, starState, winH) {
 function Star(props) {
     /*
         props = {
-            left: 0,
-            top: 0,
-            alpha: 0,
-            timeChange: 100,
-            initialYDir: -1 || 1
+            left: number,
+            top: number,
+            alpha: number,
+            timeChange: number,
+            initialYDir: number
+            key: number
         }
     */
     let winW = window.innerWidth;
     let winH = window.innerHeight;
     const [starState, setStarState] = useState({
         leftChange: 0,
-        leftAdd: (0.1 / 1366) * winW,
+        leftAdd: (0.1 / MY_WIN_DIM.W) * winW,
         topChange: 0,
-        topAdd: (1 / 667) * winH,
+        topAdd: (1 / MY_WIN_DIM.H) * winH,
         alpha: props.alpha,
     });
     // console.log(`topChange = ${starState.topChange} and topAdd = ${starState.topAdd}`);
@@ -53,9 +59,9 @@ function Star(props) {
             setStarState({
                 leftChange: starState.leftChange + starState.leftAdd,
                 leftAdd: ((starState.leftChange >= maxLChange) ? 
-                        -(0.1 / 1366) * winW : 
+                        -(0.1 / MY_WIN_DIM.W) * winW : 
                         (starState.leftChange <= -maxLChange) ? 
-                        (0.1 / 1366) * winW : starState.leftAdd),
+                        (0.1 / MY_WIN_DIM.W) * winW : starState.leftAdd),
                 topAdd: getNewTopAdd(props, starState, winH),
                 topChange: starState.topChange + starState.topAdd,
                 alpha: (starState.alpha === 0.3) ? 0.28 : 
@@ -81,7 +87,7 @@ function Star(props) {
     return (
         <div 
             className="Background-Star"
-            id={props.id} 
+            id={props.id}
             style={starCSS}
         >
             {"\u25cf"}

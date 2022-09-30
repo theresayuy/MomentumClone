@@ -6,7 +6,7 @@ function padWithZero(num) {
 } // puts a zero before num if its less than 10
 
 function get12HourTime(num) {
-    return num === 0 ? 12 : num > 12 ? (num - 12) : num;
+    return num === 0 ? 12 : (num > 12) ? (num - 12) : num;
 } // subtracts 12 from hours after noon (eg. 16:00 becomes 4:00) 
 
 function getCurrentTime(system) {
@@ -37,11 +37,11 @@ function Clock() {
     });
 
     return(
-        <div className="Clock-Main">
-            <span id="time">
+        <div className="Clock">
+            <div id="time">
                 {getCurrentTime(clockState.system)}
-            </span>
-            <span 
+            </div>
+            <div 
                 className="Change-Time-System"
                 title={`Change to ${clockState.system === 12 ? 24 : 12}-hour time.`}
                 onClick={() => {
@@ -52,7 +52,7 @@ function Clock() {
                 }}
             >
                 {"\u25cf\u25cf\u25cf"}
-            </span>
+            </div>
         </div>   
     );
 }

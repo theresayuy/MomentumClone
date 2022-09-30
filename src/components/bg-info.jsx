@@ -5,7 +5,7 @@ function BackgroundInfo() {
     const bgImgData = JSON.parse(window.localStorage.getItem("bgImgData"));
 
     return (
-        <div className="BackgroundInfo-Main">
+        <div className="BackgroundInfo">
             <div className="BackgroundInfo-Title">
                 Photo by:
             </div>

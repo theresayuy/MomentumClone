@@ -33,7 +33,6 @@ function getNewItemInfo(desc, newItemInfo, oldItemInfo) {
     };
     const extraKey = (desc === MODAL_DESC.tasks) ? "checked" : "url";
     data[extraKey] = oldItemInfo[extraKey];
-    console.log(JSON.stringify(data));
     return data;
 } /* tries to distinguish bookmarks from tasks and returns a js 
         object with the fields from newItemInfo, and with the

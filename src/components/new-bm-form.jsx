@@ -50,13 +50,13 @@ function AddNewBMForm(props) {
             <input type="text"
                 className="Add-New-Item-Input"
                 id={`${MODAL_DESC.bm}-input-new-label`}
-                placeholder="Label"
+                placeholder="New Label"
                 ref={contentInputRef}
             />
             <input type="text"
                 className="Add-New-Item-Input" 
                 id={`${MODAL_DESC.bm}-input-new-url`}
-                placeholder="URL"
+                placeholder="New URL"
                 ref={urlInputRef}
             />
             <input type="submit" hidden />

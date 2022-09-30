@@ -18,7 +18,7 @@ function GoogleSearch() {
     }
 
     return (
-        <span className="form" title="Search Google" id="google-search">
+        <div className="GoogleSearch" title="Search Google">
             <form method="GET" action="https://www.google.com/search?/" 
                 autoComplete="off" target="_blank">
                 <input 
@@ -30,7 +30,7 @@ function GoogleSearch() {
                     onBlur={toggleFocus}
                 />
             </form>
-        </span>
+        </div>
     );
 }
 

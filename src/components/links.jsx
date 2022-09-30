@@ -4,7 +4,8 @@ import './style.css';
 import Modal from './modal';
 import ModalButton from './modal-button';
 import { getListItemsBeforeMount } from './helpers';
-import { MODAL_MODIFICATION_REQUEST, MODAL_DESC } from './constants';
+import { MODAL_MODIFICATION_REQUEST, MODAL_DESC,
+    TABLE_AXIOS_URL } from './constants';
 
 function Links() {
     const [bmItems, setBMItems] = useState({
@@ -15,15 +16,15 @@ function Links() {
 
     const setItems = (newItems, index, request) => {
         if (request === MODAL_MODIFICATION_REQUEST.new) {
-            axios.post("http://localhost:3000/bookmarks", newItems.sqlData[index]);
+            axios.post(TABLE_AXIOS_URL.bm, newItems.sqlData[index]);
         } else {
-            axios.put("http://localhost:3000/bookmarks", newItems.sqlData[index]);
+            axios.put(TABLE_AXIOS_URL.bm, newItems.sqlData[index]);
         }
         setBMItems(newItems);
     } // index parameter is the index of sqlData that got changed
 
     useEffect(() => {
-        axios.get("http://localhost:3000/bookmarks").then((res) => {
+        axios.get(TABLE_AXIOS_URL.bm).then((res) => {
             setBMItems({ 
                 sqlData: res.data,
                 modalListItems: getListItemsBeforeMount(

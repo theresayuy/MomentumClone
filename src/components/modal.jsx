@@ -37,8 +37,8 @@ function Modal(props) {
                     className="Modal-Content-Head" 
                     id={`${props.desc}-modal-content-head`}
                 >
-                    <span className="Modal-Title">{props.modalContentHead}</span>                    
-                    <span 
+                    <p className="Modal-Title">{props.modalContentHead}</p>                    
+                    <p 
                         className="Close-Btn" 
                         id={`${props.desc}-modal-content-close`}
                         onClick={() => {
@@ -50,7 +50,7 @@ function Modal(props) {
                         title="Close Modal"
                     >
                         {UTIL_BTN.X}
-                    </span>
+                    </p>
                 </div>
                 <div
                     className="Modal-Add-New-Form"

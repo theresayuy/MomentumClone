@@ -2,13 +2,15 @@ const MODAL_MODIFICATION_REQUEST = {
     new: 0,
     edit: 1,
     delete: 2
-};
-
+}; // used to determine whether to delete, edit, or add list item
 const MODAL_DESC = {
     tasks: "task",
     bm: "bookmark"
 };
-
+const TABLE_AXIOS_URL = {
+    tasks: `${process.env.REACT_APP_TABLE_URL_TASKS}`,
+    bm: `${process.env.REACT_APP_TABLE_URL_BM}`
+}; // used for sql queries
 const DELETED_STR = (
     "4sh6$%v@^t%3%5MJRvY8z4@6AKa9v^feWS8kh4ZVuS6oor92Q*GfE9sJT9^%%N*#" +
     "%8&r$pg72*W$^s$2JwZNbB3^a@M%ZM4Q!K^!g2F2#4n82Ex#De87%5s4y3XpD6@a" +
@@ -20,15 +22,12 @@ const DELETED_STR = (
     "GYKj96MDeL5anGh5Gg5Gauw6ZQc8QGce5zUzuMvEvTaa3HsMRNWGfNv9wQUdeDZu" + 
     "dTwaTRN5SajyaUp9dXLapNGspAgXSCRXKYgVrQS64ZjLBtaZAVQeWhDcTpdG6rV6" +
     "NcpfxRrqdhRrzX5ZtqY3pGzRzGpghJXtE9YFu5rg5SDTUVCdwR4QUWTCVyHKZJhx"
-); // string that indicates that a bookmark or a task was deleted
-
-const FAVICON_URL_PREFIX = 
-    "https://s2.googleusercontent.com/s2/favicons?domain_url="; 
-// URL of any website can be appended to this one to get image of its favicon
+); // indicates that a bookmark or a task was deleted
+const FAVICON_URL_PREFIX = (
+    "https://s2.googleusercontent.com/s2/favicons?domain_url="
+); // URL of any website can be appended to this to get image of its favicon
 
 export {
-    MODAL_MODIFICATION_REQUEST,
-    MODAL_DESC,
-    DELETED_STR,
-    FAVICON_URL_PREFIX
+    MODAL_MODIFICATION_REQUEST, MODAL_DESC, TABLE_AXIOS_URL,
+    DELETED_STR, FAVICON_URL_PREFIX
 };

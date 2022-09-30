@@ -1,3 +1,85 @@
+# Momentum Clone
+Clone of the popular browser new tab page extension, [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=en) by [momentumdash.com](https://momentumdash.com/). 
+
+## Features
+- Random quote and background image generated once a day
+- Search Google
+- Local weather info
+- Digital Clock
+- Type your most important task on the center of the screen (also crossout, edit and delete it)
+- Add, edit, delete, and crossout tasks from a todo list
+- Create, edit, and delete bookmarks of any website
+
+## Technologies Used
+- React for frontend
+- Express for backend
+- MySQL as a database for bookmarks and tasks
+- https://type.fit/api/quotes for giant array of quotes
+- [Lorum Picsum](https://picsum.photos/) for background images
+- [OpenWeatherMap API](https://openweathermap.org/api) for weather info
+- Google Shared Stuff (S2) service to generate favicon of websites using its URL
+
+## Installation Guide
+ Install and setup the following on your computer:
+- node
+- git 
+- MySQL (here are guides for [Linux](https://www.geeksforgeeks.org/how-to-install-mysql-on-linux/), [MacOS](https://www.geeksforgeeks.org/how-to-install-mysql-on-macos/), and [Windows](https://www.geeksforgeeks.org/how-to-install-mysql-in-windows/))
+
+Open a terminal window and run Create React App:
+```
+npx create-react-app momentumclone
+```
+
+```
+cd momentumclone
+```
+
+Delete the all the files except for the `node_modules` folder from the root of the project folder. Clone the repo by running the following:
+```
+git clone https://github.com/theresayuy/MomentumClone.git
+```
+
+Run the following to install the dependencies in the root of the project folder
+```
+npm install
+```
+
+Create  an `.env` file in the root of the project folder. Insert the following into it:
+```
+PORT=3000
+DB_USER=
+DB_PASSWORD=
+DB=momentumclonedb
+DB_TASKS_TABLE=tasks
+DB_BM_TABLE=bookmarks
+REACT_APP_TABLE_URL_TASKS=http://localhost:3000/tasks
+REACT_APP_TABLE_URL_BM=http://localhost:3000/bookmarks
+REACT_APP_API_KEY_OWM=
+```
+Set the values of `DB_USER` and `DB_PASSWORD` to the values you used to setup MySQL. Set the value of `REACT_APP_API_KEY_OWM` to the OpenWeatherMap API key that you generated from your account.
+
+Open `db.js` file located in the root of the project folder and comment out line 13 and uncomment lines 14-32.
+
+Run the following to create the database and the two tables:
+```
+node db.js
+```
+
+Uncomment line 13 and comment back lines 14-32 of `db.js`.
+
+## Usage Guide
+Run this to start the backend
+```
+node server.js
+```
+
+Run this to start the frontend
+```
+npm start
+```
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

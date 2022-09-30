@@ -6,7 +6,6 @@ import { useLocalStorage, getRandomValueFromArray,
     getArrayFrom } from './helpers';
 import {PICSUM_IDS} from './constants';
 
-
 // some values to initialize the stars
 const ALPHA = [0.3, 0.28, 0.26, 0.24, 0.22, 0.2, 
     0.18, 0.16, 0.14, 0.12, 0.1];
@@ -23,8 +22,9 @@ function getRandomId() {
 } // get random ID of an image stored on lorem picsum.
 
 function Background() {
+    const NOW = new Date();
     const [bgImgData, storeBGImgData] = useLocalStorage("bgImgData", {
-        latestDate: new Date().toDateString(),
+        latestDate: NOW.toDateString(),
         latestID: getRandomId(),
         author: 0,
         unsplashURL: "https://unsplash.com/"
@@ -35,14 +35,15 @@ function Background() {
     let style = {backgroundImage: ""};
     let stars = [];
 
-    if (bgImgData.latestDate !== new Date().toDateString() || 
+    if ((bgImgData.latestDate !== NOW.toDateString()
+        && NOW.getHours() >= 4) || 
         bgImgData.author === 0) 
     {
         const newID = getRandomId();        
         const baseURL = `https://picsum.photos/id/${newID}/info`;        
         $.getJSON(baseURL, function(result) {
             storeBGImgData({
-                latestDate: new Date().toDateString() ,
+                latestDate: NOW.toDateString(),
                 latestID: newID,
                 author: result.author,
                 unsplashURL: result.url
@@ -56,6 +57,7 @@ function Background() {
 
     for (let i = 0; i < (bgState.winW * 0.2); i++) {
         stars.push(<Star
+            key={`${i}`}
             id={`bg-star-${i}`}
             left={Math.random() * bgState.winW}
             top={Math.random() * bgState.winH}
@@ -66,7 +68,7 @@ function Background() {
     } // many stars will be added to background
     
     return (
-        <div id="bg" className="Background-Main" style={style}
+        <div className="Background" style={style}
             onResize={() => {                
                 renderBackground({
                     winH: window.innerHeight, winW: window.innerWidth

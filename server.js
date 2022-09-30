@@ -1,20 +1,13 @@
 const express = require("express");
 const cors = require('cors');
+const con = require('./db');
 require("dotenv").config();
 const app = express();
 app.use(express.json()); // parses incoming requests with JSON payloads
 app.use(cors());
-var mysql = require('mysql');
 
-const con = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB
-});
-
-const listener = app.listen(process.env.PORT || 3000, () => {
-    console.log('App is listening on port ' + listener.address().port)
+const listener = app.listen(process.env.PORT, () => {
+    console.log(`App is listening on port ${listener.address().port}`)
 });
 
 /************************************************/
@@ -23,8 +16,8 @@ const listener = app.listen(process.env.PORT || 3000, () => {
 /*                                              */
 /************************************************/
 
-app.get("/tasks", (req, res) => {
-    con.query(`SELECT * FROM tasks`, (err, result) => {
+app.get(`/${process.env.DB_TASKS_TABLE}`, (req, res) => {
+    con.query(`SELECT * FROM ${process.env.DB_TASKS_TABLE}`, (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -33,19 +26,23 @@ app.get("/tasks", (req, res) => {
     });
 }); // get tasks
 
-app.post("/tasks", (req, res) => {
-    con.query("INSERT INTO tasks SET ?", req.body, (err, _) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send("Task Added to Database");
+app.post(`/${process.env.DB_TASKS_TABLE}`, (req, res) => {
+    con.query(`INSERT INTO ${process.env.DB_TASKS_TABLE} SET ?`, req.body, 
+        (err, _) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send("Task Added to Database");
+            }
         }
-    });
+    );
 }); // adds a new task to the database
 
-app.put("/tasks", (req, res) => {
+app.put(`/${process.env.DB_TASKS_TABLE}`, (req, res) => {
     const updateQuery =
-        "UPDATE tasks SET content = ?, checked = ?, editFormHidden = ? WHERE id = " + req.body.id;
+        `UPDATE ${
+            process.env.DB_TASKS_TABLE
+        } SET content = ?, checked = ?, editFormHidden = ? WHERE id = ${req.body.id}`;
     con.query(
         updateQuery,
         [req.body.content, req.body.checked, req.body.editFormHidden, req.body.id],
@@ -65,8 +62,8 @@ app.put("/tasks", (req, res) => {
 /*                                                  */
 /****************************************************/
 
-app.get("/bookmarks", (req, res) => {
-    con.query(`SELECT * FROM bookmarks`, (err, result) => {
+app.get(`/${process.env.DB_BM_TABLE}`, (req, res) => {
+    con.query(`SELECT * FROM ${process.env.DB_BM_TABLE}`, (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -75,8 +72,8 @@ app.get("/bookmarks", (req, res) => {
     });
 }); // get bookmarks
 
-app.post("/bookmarks", (req, res) => {
-    con.query("INSERT INTO bookmarks SET ?", req.body, (err, _) => {
+app.post(`/${process.env.DB_BM_TABLE}`, (req, res) => {
+    con.query(`INSERT INTO ${process.env.DB_BM_TABLE} SET ?`, req.body, (err, _) => {
         if (err) {
             console.log(err);
         } else {
@@ -85,9 +82,11 @@ app.post("/bookmarks", (req, res) => {
     });
 }); // add new bookmark
 
-app.put("/bookmarks", (req, res) => {
+app.put(`/${process.env.DB_BM_TABLE}`, (req, res) => {
     const updateQuery =
-        "UPDATE bookmarks SET content = ?, url = ?, editFormHidden = ? WHERE id = " + req.body.id;
+        `UPDATE ${
+            process.env.DB_BM_TABLE
+        } SET content = ?, url = ?, editFormHidden = ? WHERE id = ${req.body.id}`;
     con.query(
         updateQuery,
         [req.body.content, req.body.url, req.body.editFormHidden, req.body.id],

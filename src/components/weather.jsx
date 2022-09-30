@@ -1,7 +1,6 @@
 import './style.css';
 import React from 'react';
 import $ from 'jquery';
-import { API_KEYS } from './constants';
 import { useLocalStorage } from './helpers';
 
 const LS_KEY = "weatherInfo";
@@ -20,7 +19,7 @@ function Weather() {
             }&lon=${
                 long
             }&appid=${
-                API_KEYS.OPEN_WM
+                process.env.REACT_APP_API_KEY_OWM
             }`;
     
         $.get(baseURL, function(res) {
@@ -31,11 +30,11 @@ function Weather() {
                 temperature: `${temp}°C`,
                 condition: `${condition}`
             });
-        })
+        });
     });
 
-    return(
-        <div className="Weather-Main">
+    return (
+        <div className="Weather">
             <div id="temperature">{weatherInfo.temperature}</div>
             <div id="condition">{weatherInfo.condition}</div>
         </div> 

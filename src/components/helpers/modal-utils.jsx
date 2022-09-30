@@ -10,6 +10,7 @@ function getListItemsBeforeMount(description, getParentState, renderParent, sqlD
     for (let i = 0; i < sqlData.length; i++) {
         if (sqlData[i].content !== DELETED_STR) {
             result.push(<ModalListItem
+                key={`${i}`}
                 desc={description} 
                 itemInfo={sqlData[i]}
                 getParentState={getParentState}
@@ -19,6 +20,7 @@ function getListItemsBeforeMount(description, getParentState, renderParent, sqlD
             result.push(
                 <li 
                     className="Deleted-List-Item"
+                    key={`${i}`}
                 ></li>
             );
         }

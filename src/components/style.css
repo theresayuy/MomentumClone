@@ -19,7 +19,7 @@ input[type=text]:focus {
 /*        BACKGROUND        */
 /*                          */
 /****************************/
-#bg {
+.Background {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,7 +31,7 @@ input[type=text]:focus {
   z-index: -1;
 }
   
-div.BackgroundInfo-Main {
+.BackgroundInfo {
   position: fixed;
   left: 10px;
   bottom: 10px;
@@ -41,8 +41,7 @@ div.BackgroundInfo-Main {
 
 div.BackgroundInfo-Title {
   color: rgba(255, 255, 255, 0.8);
-  padding-bottom: 5px;
-  padding-left: 5px;
+  padding: 0 0 5px 5px;
 }
 
 button.BackgroundInfo-Credits {
@@ -106,27 +105,26 @@ div.Background-Star {
 /*              WEATHER              */
 /*                                   */
 /*************************************/
-.Weather-Main {
-  right: 10px;
-  top: 10px;
-  position: fixed;
+.Weather {
   color:rgba(255, 255, 255, 0.8);
   animation: FadeOut-FromWhite 1s linear;
   text-shadow: 5px 5px 35px rgba(0, 0, 0, 0.5);
   text-align: right;
 }
 
-.Weather-Main:hover {
+.Weather:hover {
   color: white;
   animation: FadeIn-ToWhite 1s linear;
 }
 
 #temperature {
   font-size: 30px;
+  padding: 10px 10px 0 0; 
 }
 
 #condition {
   font-size: 14px;
+  padding-right: 10px;
 }
 
 /***********************************/
@@ -134,41 +132,35 @@ div.Background-Star {
 /*              CLOCK              */
 /*                                 */
 /***********************************/
+
+.Clock {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
 #time {
   font-size: 200px;
   text-shadow: 10px 10px 100px #000000;
+  padding: 0 8px;
 }
 
 .Change-Time-System {
   cursor: pointer;
   color: rgba(255, 255, 255, 0.8);
-  padding: 12px 8px 12px 8px;
   animation: Change-Time-System-OnMouseLeave 0.5s linear;
   font-size: 16px;
   font-weight: bolder;
   border-radius: 50%;
+  padding: 12px 8px;
 }
 
 .Change-Time-System:hover {
   color: white;
   animation: Change-Time-System-Hover 0.5s linear;
   background-color: rgba(255, 255, 255, 0.2);
-}
-
-.Tooltip-Content {
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  font-size: 14px;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: 52%;
-  left: 65%;
-  margin-left: -60px;
 }
 
 /***********************/
@@ -236,7 +228,7 @@ input[id*="input-google-search"]::-webkit-input-placeholder {
 /*                      */
 /************************/
 *[class*="-Hidden"], 
-li.Deleted-List-Item {
+.Deleted-List-Item {
   display: none;
 }
 
@@ -264,8 +256,10 @@ input[type=text].Add-New-Item-Input {
 }
 
 .Modal-Content-Head {
-  padding-bottom: 10px;
-  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+  justify-content: space-between;
 }
 
 .Modal-Title {
@@ -274,10 +268,8 @@ input[type=text].Add-New-Item-Input {
   padding-left: 2px;
 }
 
-span[id*="modal-content-close"] {
+p[id*="modal-content-close"] {
   font-size: 12pt;
-  right: 10px;
-  position: fixed;
 }
 
 .Modal-Content-Body {
@@ -287,8 +279,24 @@ span[id*="modal-content-close"] {
   margin: 0;
   text-align: left;
   padding: 0;
-  overflow: auto;
+  overflow: auto; /* enable scroll */
   z-index:1;
+}
+
+.Modal-Content-Body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.Modal-Content-Body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.Modal-Content-Body::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.Modal-Content-Body::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 span[class*="Displayed-List-Item"] span {
@@ -334,11 +342,6 @@ button.Modal-Button:hover {
 /*        LINKS        */
 /*                     */
 /***********************/
-#link-modal {
-  left: 0;
-  top: 30px;
-}
-
 a.BM-Anchor, 
 a.BM-Anchor:visited {
   text-indent: 5px;
@@ -350,6 +353,7 @@ a.BM-Anchor:visited {
 /*        TODO LIST        */
 /*                         */
 /***************************/
+
 #task-modal-btn {
   right: 0;
   position: fixed;
