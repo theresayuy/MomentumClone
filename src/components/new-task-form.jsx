@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import './style.css';
-import { addListItemData, alertRejectedInput } from "./helpers";
+import { addListItemData, alertRejectedInput,
+    getAESFromUTF8Str } from "./helpers";
 import { MODAL_MODIFICATION_REQUEST, MAX_STR_LEN, 
     DELETED_STR, MODAL_DESC } from "./constants";
 
@@ -24,12 +25,12 @@ function AddNewTaskForm(props) {
             autoComplete="off"
             onSubmit={(event) => {
                 const newContent = inputRef.current.value
-
-                if (newContent.length <= MAX_STR_LEN.sql &&
-                    newContent !== DELETED_STR &&
+                const newContentEncrypted = getAESFromUTF8Str(newContent);
+                if (newContentEncrypted.length <= MAX_STR_LEN.sql
+                    && newContent !== DELETED_STR &&
                     newContent.trim().length > 0) {
                     addListItemData(event, {
-                            content: newContent,
+                            content: newContentEncrypted,
                             checked: false,
                             id: props.getParentState().modalListItems.length,
                             editFormHidden: true

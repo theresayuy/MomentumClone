@@ -1,35 +1,7 @@
-import {ENCRYPT0, ENCRYPT1} from '../constants';
+import CryptoJS from "crypto-js";
 
 export function getDeepCopy(toCopy) {
     return ((toCopy.toString() === toCopy ? " " : [" "]).concat(toCopy)).slice(1);
-}
-
-export function decryptStr(toDecrypt, method) {
-    const toDecryptArr = Array.from(toDecrypt);
-    const decryptMethod = method === 1 ? ENCRYPT1 : ENCRYPT0;
-    let result = "";
-    toDecryptArr.forEach((toDecryptChar) => {
-        Object.getKeys(decryptMethod).forEach((keyItem) => {
-            if (toDecryptChar === decryptMethod[keyItem]) {
-                result += keyItem;
-            }
-        });
-    }); 
-    return getDeepCopy(result);
-}
-
-export function encryptStr(toEncrypt, method) {
-    const toEncryptArr = Array.from(toEncrypt);
-    const encryptMethod = method === 1 ? ENCRYPT1 : ENCRYPT0;
-    let result = "";
-    toEncryptArr.forEach((toEncryptChar) => {
-        Object.getKeys(encryptMethod).forEach((keyItem) => {
-            if (toEncryptChar === keyItem) {
-                result += encryptMethod[keyItem];
-            }
-        });
-    }); 
-    return getDeepCopy(result);
 }
 
 export function formatStrMethod1(str, maxlen) {
@@ -38,6 +10,20 @@ export function formatStrMethod1(str, maxlen) {
     }
 
     return str;
+}
+
+export function getAESFromUTF8Str(str) {
+    return CryptoJS.AES.encrypt(
+        str, process.env.REACT_APP_CRYPTO_JS_KEY
+    ).toString();
+}
+
+export function getUTF8StrFromAES(aesStr) {
+    return CryptoJS.AES.decrypt(
+        aesStr, process.env.REACT_APP_CRYPTO_JS_KEY
+    ).toString(
+        CryptoJS.enc.Utf8
+    );
 }
 
 export function getRandomValueFromArray(arr) {

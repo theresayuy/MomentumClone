@@ -1,4 +1,3 @@
-export {ENCRYPT1, ENCRYPT0} from './encrypt-methods';
 export {default as QUOTES} from './typefit-quotes';
 export {default as UTIL_BTN} from './util-buttons';
 export {default as PICSUM_IDS} from './picsum-gallery-ids';

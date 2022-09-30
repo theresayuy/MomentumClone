@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import './style.css';
-import { addListItemData, toggleDisplay, 
-    formatURL, alertRejectedInput } from './helpers';
+import { addListItemData, toggleDisplay, formatURL, 
+    alertRejectedInput, getAESFromUTF8Str } from './helpers';
 import { MODAL_MODIFICATION_REQUEST, MAX_STR_LEN, 
     DELETED_STR, MODAL_DESC } from "./constants";
 
@@ -29,18 +29,19 @@ function EditBMForm(props) {
             autoComplete="off"
             onSubmit={(event) => {
                 const newContent = labelInputRef.current.value;
+                const newContentEncrypted = getAESFromUTF8Str(newContent);
                 const newURL = formatURL(urlInputRef.current.value);
-                console.log(newContent + "\n" + newURL);
+                const newURLEncrypted = getAESFromUTF8Str(newURL);
                 
-                if (newContent.length <= MAX_STR_LEN.sql &&
-                    newURL.length <= MAX_STR_LEN.sql &&
+                if (newContentEncrypted.length <= MAX_STR_LEN.sql &&
+                    newURLEncrypted.length <= MAX_STR_LEN.sql &&
                     newContent !== DELETED_STR &&
                     newContent.trim().length > 0 &&
                     newURL.trim().length > 0) {
                     addListItemData(
                         event, {
-                            content: newContent,
-                            url: newURL,
+                            content: newContentEncrypted,
+                            url: newURLEncrypted,
                             id: props.itemInfo.id,
                             editFormHidden: true
                         }, props.getParentState, props.renderParent, 

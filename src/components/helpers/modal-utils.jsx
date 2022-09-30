@@ -2,7 +2,7 @@ import React from "react";
 import ModalListItem from "../modal-list-item";
 import { DELETED_STR, MODAL_MODIFICATION_REQUEST } 
     from '../constants';
-import { getDeepCopy } from "./str-arr-utils";
+import { getDeepCopy, getAESFromUTF8Str } from "./str-arr-utils";
 
 function getListItemsBeforeMount(description, getParentState, renderParent, sqlData) {
     const result = [];
@@ -33,7 +33,7 @@ before the component mounts.
 
 function toggleCheck(event, itemInfo, getState, renderTodoList) {
     addListItemData(event, {
-            content: getDeepCopy(itemInfo.content),
+            content: getAESFromUTF8Str(itemInfo.content),
             checked: !itemInfo.checked,
             id: itemInfo.id,
             editFormHidden: true

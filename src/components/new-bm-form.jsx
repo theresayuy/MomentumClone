@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import './style.css';
 import { addListItemData, formatURL,
-    alertRejectedInput } from "./helpers";
+    alertRejectedInput, getAESFromUTF8Str } from "./helpers";
 import { MODAL_MODIFICATION_REQUEST, MAX_STR_LEN, 
     DELETED_STR, MODAL_DESC } from "./constants";
 
@@ -26,10 +26,12 @@ function AddNewBMForm(props) {
             autoComplete="off"
             onSubmit={(event) => {
                 const newContent = contentInputRef.current.value;
+                const newContentEncrypted = getAESFromUTF8Str(newContent);
                 const newURL = formatURL(urlInputRef.current.value);
+                const newURLEncrypted = getAESFromUTF8Str(newURL);
 
-                if (newContent.length <= MAX_STR_LEN.sql &&
-                    newURL.length <= MAX_STR_LEN.sql &&
+                if (newContentEncrypted.length <= MAX_STR_LEN.sql &&
+                    newURLEncrypted.length <= MAX_STR_LEN.sql &&
                     newContent !== DELETED_STR &&
                     newContent.trim().length > 0 &&
                     newURL.trim().length > 0) {
@@ -37,8 +39,8 @@ function AddNewBMForm(props) {
                         event, {
                             id: props.getParentState().sqlData.length,
                             editFormHidden: true,
-                            content: newContent,
-                            url: newURL  
+                            content: newContentEncrypted,
+                            url: newURLEncrypted  
                         }, props.getParentState, props.renderParent, 
                         MODAL_MODIFICATION_REQUEST.new
                     );

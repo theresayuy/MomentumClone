@@ -14,7 +14,8 @@ Clone of the popular browser new tab page extension, [Momentum](https://chrome.g
 - React for frontend
 - Express for backend
 - MySQL as a database for bookmarks and tasks
-- https://type.fit/api/quotes for giant array of quotes
+- [crypto-js](https://cryptojs.gitbook.io/docs/) to encrypt and decrypt user input
+-  https://type.fit/api/quotes for quotes and their authors
 - [Lorum Picsum](https://picsum.photos/) for background images
 - [OpenWeatherMap API](https://openweathermap.org/api) for weather info
 - Google Shared Stuff (S2) service to generate favicon of websites using its URL
@@ -44,7 +45,7 @@ Run the following to install the dependencies in the root of the project folder
 npm install
 ```
 
-Create  an `.env` file in the root of the project folder. Insert the following into it:
+Create an `.env` file in the root of the project folder. Insert the following into it:
 ```
 PORT=3000
 DB_USER=
@@ -55,8 +56,9 @@ DB_BM_TABLE=bookmarks
 REACT_APP_TABLE_URL_TASKS=http://localhost:3000/tasks
 REACT_APP_TABLE_URL_BM=http://localhost:3000/bookmarks
 REACT_APP_API_KEY_OWM=
+REACT_APP_CRYPTO_JS_KEY=
 ```
-Set the values of `DB_USER` and `DB_PASSWORD` to the values you used to setup MySQL. Set the value of `REACT_APP_API_KEY_OWM` to the OpenWeatherMap API key that you generated from your account.
+Set the values of `DB_USER` and `DB_PASSWORD` to the values you used to setup MySQL. Set the value of `REACT_APP_API_KEY_OWM` to the OpenWeatherMap API key that you generated from your account. Set the value of `REACT_APP_CRYPTO_JS_KEY` to anything you want.
 
 Open `db.js` file located in the root of the project folder and comment out line 8 and uncomment lines 11-29.
 

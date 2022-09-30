@@ -1,14 +1,54 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const con = require('./db');
 require("dotenv").config();
+const AES = require("crypto-js/aes");
+const UTF8 = require("crypto-js/enc-utf8");
 const app = express();
 app.use(express.json()); // parses incoming requests with JSON payloads
 app.use(cors());
-
 const listener = app.listen(process.env.PORT, () => {
     console.log(`App is listening on port ${listener.address().port}`)
 });
+
+/******************************************/
+/*                                        */
+/*              DECRYPT STRINGS           */
+/*                                        */
+/******************************************/
+
+function getUTF8StrFromAES(str) {
+    return AES.decrypt(str, 
+        process.env.REACT_APP_CRYPTO_JS_KEY).toString(UTF8);
+}
+
+function getDecryptedTasksResult(result) {
+    const decrpyedResult = [];
+    for (let i = 0; i < result.length; i++) {
+        decrpyedResult.push({
+            content: getUTF8StrFromAES(result[i].content),
+            checked: result[i].checked,
+            editFormHidden: result[i].editFormHidden,
+            id: result[i].id
+        });
+    }
+
+    return decrpyedResult;
+}
+
+function getDecryptedBMResult(result) {
+    const decrpyedResult = [];
+    for (let i = 0; i < result.length; i++) {
+        decrpyedResult.push({
+            content: getUTF8StrFromAES(result[i].content),
+            url: getUTF8StrFromAES(result[i].url),
+            editFormHidden: result[i].editFormHidden,
+            id: result[i].id
+        });
+    }
+
+    return decrpyedResult;    
+}
 
 /************************************************/
 /*                                              */
@@ -21,12 +61,12 @@ app.get(`/${process.env.DB_TASKS_TABLE}`, (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.send(result);
+            res.send(getDecryptedTasksResult(result));
         }
     });
 }); // get tasks
 
-app.post(`/${process.env.DB_TASKS_TABLE}`, (req, res) => {
+app.post(`/${process.env.DB_TASKS_TABLE}`, (req, res) => {    
     con.query(`INSERT INTO ${process.env.DB_TASKS_TABLE} SET ?`, req.body, 
         (err, _) => {
             if (err) {
@@ -35,7 +75,7 @@ app.post(`/${process.env.DB_TASKS_TABLE}`, (req, res) => {
                 res.send("Task Added to Database");
             }
         }
-    );
+    ); 
 }); // adds a new task to the database
 
 app.put(`/${process.env.DB_TASKS_TABLE}`, (req, res) => {
@@ -50,7 +90,7 @@ app.put(`/${process.env.DB_TASKS_TABLE}`, (req, res) => {
             if (err) {
                 console.log(err);
             } else {
-                res.send(result);
+                res.send(getDecryptedTasksResult(result));
             }
         }
     );
@@ -67,7 +107,7 @@ app.get(`/${process.env.DB_BM_TABLE}`, (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.send(result);
+            res.send(getDecryptedBMResult(result));
         }
     });
 }); // get bookmarks
@@ -94,7 +134,7 @@ app.put(`/${process.env.DB_BM_TABLE}`, (req, res) => {
             if (err) {
                 console.log(err);
             } else {
-                res.send(result);
+                res.send(getDecryptedBMResult(result));
             }
         }
     );

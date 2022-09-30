@@ -3,7 +3,7 @@ import './style.css';
 import EditBMForm from './edit-bm-form';
 import EditTaskForm from './edit-task-form';
 import { toggleCheck, toggleDisplay, addListItemData, 
-    getDeepCopy, formatStrMethod1} from './helpers';
+    formatStrMethod1, getAESFromUTF8Str} from './helpers';
 import { UTIL_BTN, FAVICON_URL_PREFIX, MAX_STR_LEN, 
     DELETED_STR, MODAL_MODIFICATION_REQUEST, 
     MODAL_DESC } from './constants';
@@ -27,12 +27,13 @@ function getNewItemInfo(desc, newItemInfo, oldItemInfo) {
     */
         
     const data = {
-        content: newItemInfo.content, 
+        content: getAESFromUTF8Str(newItemInfo.content), 
         id: oldItemInfo.id,
         editFormHidden: newItemInfo.editFormHidden
     };
     const extraKey = (desc === MODAL_DESC.tasks) ? "checked" : "url";
-    data[extraKey] = oldItemInfo[extraKey];
+    data[extraKey] = (extraKey === "url") ? 
+        getAESFromUTF8Str(oldItemInfo[extraKey]) : oldItemInfo[extraKey];
     return data;
 } /* tries to distinguish bookmarks from tasks and returns a js 
         object with the fields from newItemInfo, and with the
@@ -132,7 +133,7 @@ function ModalListItem(props) {
                         addListItemData(event, 
                             getNewItemInfo(
                                 props.desc, {
-                                    content: getDeepCopy(DELETED_STR),
+                                    content: DELETED_STR,
                                     editFormHidden: true
                                 }, props.itemInfo
                             ), 

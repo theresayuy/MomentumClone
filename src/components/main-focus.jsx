@@ -3,9 +3,11 @@
  * they want to focus on.
  */
 import React, { useState } from 'react';
-import './style.css';
 import $ from 'jquery';
-import { getDeepCopy, useLocalStorage, formatStrMethod1 } from './helpers';
+import './style.css';
+import { getDeepCopy, useLocalStorage, 
+    formatStrMethod1, getAESFromUTF8Str,
+    getUTF8StrFromAES } from './helpers';
 import { UTIL_BTN, MAX_STR_LEN } from './constants';
 
 // lets user change their main focus
@@ -91,7 +93,8 @@ function MainFocus() {
                         "What is your main focus for today?" : "Today",
         showFocusCheck: (storedFocus.checked) ? UTIL_BTN.CBB : 
                         UTIL_BTN.EBB, // checkbox utility button
-        showFocusText: storedFocus.focusText,
+        showFocusText: (storedFocus.focusText !== "") ? 
+            getUTF8StrFromAES(storedFocus.focusText) : "",
         showFocusCheckTitle: ((storedFocus.checked) ? "Unc" : "C") + "heck",
         idMFT: "main-focus-title", // main focus title paragraph id
         idSFT: "show-focus-text", // show focus text paragraph id
@@ -132,7 +135,7 @@ function MainFocus() {
                 onSubmit={(event) => {
                     setFocus(event, mfState, (oldMFState, vals) => {
                         setStoredFocus({
-                            focusText: vals.showFocusText,
+                            focusText: getAESFromUTF8Str(vals.showFocusText),
                             checked: false
                         });
                         renderMF({
@@ -163,7 +166,7 @@ function MainFocus() {
                     onClick={() => {
                         focusDisplayCheckEvent(mfState, (oldMFState, vals) => {
                             setStoredFocus({
-                                focusText: oldMFState.showFocusText,
+                                focusText: getAESFromUTF8Str(oldMFState.showFocusText),
                                 checked: (vals.showFocusCheck === UTIL_BTN.CBB)
                             });
                             renderMF({
