@@ -58,14 +58,14 @@ REACT_APP_API_KEY_OWM=
 ```
 Set the values of `DB_USER` and `DB_PASSWORD` to the values you used to setup MySQL. Set the value of `REACT_APP_API_KEY_OWM` to the OpenWeatherMap API key that you generated from your account.
 
-Open `db.js` file located in the root of the project folder and comment out line 13 and uncomment lines 14-32.
+Open `db.js` file located in the root of the project folder and comment out line 8 and uncomment lines 11-29.
 
 Run the following to create the database and the two tables:
 ```
 node db.js
 ```
 
-Uncomment line 13 and comment back lines 14-32 of `db.js`.
+Uncomment line 8 and comment back lines 11-29 of `db.js`.
 
 ## Usage Guide
 Run this to start the backend
@@ -79,6 +79,7 @@ npm start
 ```
 
 ---
+
 
 # Getting Started with Create React App
 
