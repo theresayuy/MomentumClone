@@ -16,7 +16,7 @@ Clone of the popular browser new tab page extension, [Momentum](https://chrome.g
 - MySQL as a database for bookmarks and tasks
 - [crypto-js](https://cryptojs.gitbook.io/docs/) to encrypt and decrypt user input
 -  https://type.fit/api/quotes for quotes and their authors
-- [Lorum Picsum](https://picsum.photos/) for background images
+- [Lorem Picsum](https://picsum.photos/) for background images
 - [OpenWeatherMap API](https://openweathermap.org/api) for weather info
 - Google Shared Stuff (S2) service to generate favicon of websites using its URL
 
