@@ -26,16 +26,7 @@ Clone of the popular browser new tab page extension, [Momentum](https://chrome.g
 - git 
 - MySQL (here are guides for [Linux](https://www.geeksforgeeks.org/how-to-install-mysql-on-linux/), [MacOS](https://www.geeksforgeeks.org/how-to-install-mysql-on-macos/), and [Windows](https://www.geeksforgeeks.org/how-to-install-mysql-in-windows/))
 
-Open a terminal window and run Create React App:
-```
-npx create-react-app momentumclone
-```
-
-```
-cd momentumclone
-```
-
-Delete the all the files except for the `node_modules` folder from the root of the project folder. Clone the repo by running the following:
+Clone the repo by running the following:
 ```
 git clone https://github.com/theresayuy/MomentumClone.git
 ```
@@ -45,7 +36,7 @@ Run the following to install the dependencies in the root of the project folder
 npm install
 ```
 
-Create an `.env` file in the root of the project folder. Insert the following into it:
+Create  an `.env` file in the root of the project folder. Insert the following into it:
 ```
 PORT=3000
 DB_USER=
@@ -53,10 +44,10 @@ DB_PASSWORD=
 DB=momentumclonedb
 DB_TASKS_TABLE=tasks
 DB_BM_TABLE=bookmarks
+REACT_APP_CRYPTO_JS_KEY=
 REACT_APP_TABLE_URL_TASKS=http://localhost:3000/tasks
 REACT_APP_TABLE_URL_BM=http://localhost:3000/bookmarks
 REACT_APP_API_KEY_OWM=
-REACT_APP_CRYPTO_JS_KEY=
 ```
 Set the values of `DB_USER` and `DB_PASSWORD` to the values you used to setup MySQL. Set the value of `REACT_APP_API_KEY_OWM` to the OpenWeatherMap API key that you generated from your account. Set the value of `REACT_APP_CRYPTO_JS_KEY` to anything you want.
 
