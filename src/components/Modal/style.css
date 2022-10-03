@@ -1,0 +1,72 @@
+@import url("../../styles/util-btn.css");
+@import url("../../styles/display-none.css");
+
+p[id*="modal-content-close"] {
+    font-size: 12pt;
+}
+
+.Modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* not sure if this is useful w/out CSS flexbox */
+    width: 20%;
+    height: 40%;
+    background-color: black;
+    border: solid 1px black;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.Modal-Content {
+    margin: auto;
+    padding: 0;
+}
+
+.Modal-Content-Head {
+    display: flex;
+    flex-direction: row;
+    margin: 2px;
+    justify-content: space-between;
+}
+
+.Modal-Title {
+    font-weight: bold;
+    font-size: 16px;
+    padding-left: 2px;
+}
+
+.Modal-Content-Body {
+    height: 30%;
+    width: 20%;
+    position: fixed;
+    margin: 0;
+    text-align: left;
+    padding: 0;
+    overflow: auto; /* enable scroll */
+    z-index:1;
+}
+
+.Modal-Content-Body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.Modal-Content-Body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.Modal-Content-Body::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.Modal-Content-Body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+ul[id*="-modal-ul"] {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+#task-modal {
+    right: 0;
+    bottom: 30px;
+}

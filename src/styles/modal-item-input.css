@@ -1,0 +1,9 @@
+@import url("./input-type-text.css");
+@import url("./display-none.css");
+
+input[type=text].Edit-Item-Form-Input,
+input[type=text].Add-New-Item-Input {
+    border-bottom: none;
+    width: 260px;
+    background-color: rgba(25, 25, 25, 1);
+}

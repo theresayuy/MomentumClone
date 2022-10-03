@@ -1,0 +1,39 @@
+@keyframes FadeIn-ToWhite {
+    from {
+      color: rgba(255, 255, 255, 0.8);
+    } 
+    to {
+      color: white;
+    }
+}
+
+@keyframes FadeOut-FromWhite {
+    from {
+        color: white;
+    }
+    to {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+@keyframes Change-Time-System-Hover {
+    from {
+        background-color:rgba(255, 255, 255, 0);
+        color: rgba(255, 255, 255, 0.8);
+    }
+    to {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+}
+
+@keyframes Change-Time-System-OnMouseLeave {
+    from {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+    to {
+        background-color:rgba(255, 255, 255, 0);
+        color: rgba(255, 255, 255, 0.8);
+    }
+}

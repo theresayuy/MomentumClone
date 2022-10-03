@@ -1,0 +1,25 @@
+@import url("../../styles/util-btn.css");
+@import url("../../styles/input-type-text.css");
+
+#focus {
+    width: 450px;
+    height: 40px;
+    text-align: center;
+    font-size: 36px;
+    border-bottom: 3px solid white;
+    background-color:rgba(0, 0, 0, 0); /* transparent */
+} /* this is a text input for a form */
+
+#show-focus-0 {
+    display: none;
+} /* hides the show focus text, check box, 
+pencil, etc. when first loaded */
+
+#greeting {
+    font-size: 60px;
+}
+
+#show-focus-text {
+    padding-left: 24px;
+    padding-right: 24px;
+}

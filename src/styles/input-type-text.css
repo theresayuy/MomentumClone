@@ -1,0 +1,9 @@
+input[type=text] {
+    border: none; /* text inputs in this program either only have 
+        bottom border or no border at all */
+    color: white;
+}
+    
+input[type=text]:focus {
+    outline: none; /* no black outline when you are typing */
+}

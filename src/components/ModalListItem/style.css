@@ -1,0 +1,30 @@
+@import url("../../styles/util-btn.css");
+@import url("../../styles/display-none.css");
+
+span[class*="Displayed-List-Item"] span {
+    font-size: 15px;
+    float: none;
+    display: inline-block;
+}
+
+span.Modal-List-Item-Content {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+span[id*="-list-item-cb-"],
+span[id*="-list-item-edit-"],
+span[id*="-list-item-clear-"] {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+a.BM-Anchor, 
+a.BM-Anchor:visited {
+    text-indent: 5px;
+    color: white;
+}
+
+span[id~=task-list-item-content] {
+    text-indent: 15px;
+} /* indent the label for each task */

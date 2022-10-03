@@ -1,0 +1,23 @@
+@import url("../../styles/animations.css");
+
+.Weather {
+    color:rgba(255, 255, 255, 0.8);
+    animation: FadeOut-FromWhite 1s linear;
+    text-shadow: 5px 5px 35px rgba(0, 0, 0, 0.5);
+    text-align: right;
+}
+
+.Weather:hover {
+    color: white;
+    animation: FadeIn-ToWhite 1s linear;
+}
+
+#temperature {
+    font-size: 30px;
+    padding: 10px 10px 0 0; 
+}
+
+#condition {
+    font-size: 14px;
+    padding-right: 10px;
+}

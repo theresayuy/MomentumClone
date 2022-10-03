@@ -1,0 +1,4 @@
+*[class*="-Hidden"], 
+.Deleted-List-Item {
+  display: none;
+}

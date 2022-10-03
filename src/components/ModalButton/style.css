@@ -1,0 +1,22 @@
+@import url("../../styles/animations.css");
+
+button.Modal-Button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0); /* transparent bg */
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 4px 4px 20px #000000;
+    font-size: 18px;
+    padding: 5px 5px 5px 5px;
+}
+
+button.Modal-Button:hover {
+    cursor: pointer;
+    color: white;
+    animation: FadeIn-ToWhite 1s linear;
+}
+
+#task-modal-btn {
+    right: 0;
+    position: fixed;
+    bottom: 0;
+}

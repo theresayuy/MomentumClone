@@ -1,0 +1,31 @@
+.Close-Btn, .Edit-Btn, .CB-Btn {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.Close-Btn:hover,
+.Close-Btn:focus,
+.Edit-Btn:hover,
+.Edit-Btn:focus,
+.CB-Btn:hover,
+.CB-Btn:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.Close-Btn:hover,
+.Close-Btn:focus {
+    color: red;
+}
+
+.Edit-Btn:hover, 
+.Edit-Btn:focus {
+    color: #7CFC00;
+}
+
+.CB-Btn:hover,
+.CB-Btn:focus {
+    color: white;
+}
+  

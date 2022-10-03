@@ -1,0 +1,33 @@
+@import url("../../styles/input-type-text.css");
+
+input[id*="input-google-search"] {
+    background-color:rgba(0, 0, 0, 0); /* transparent */
+    background-repeat: no-repeat;
+    background-position: 7px 8px;
+    padding-left: 27px;
+    top: 20px;
+    height: 30px;
+    text-align: left;
+    font-size: 12px;
+    width: 250px;
+}
+
+#input-google-search {
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+    background-image: url('../../assets/search-icon-inactive.png');    
+}
+
+#input-google-search:hover {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+#input-google-search-active {
+    border-bottom: 2px solid white;
+    background-image: url('../../assets/search-icon.png');   
+}
+
+input[id*="input-google-search"]::placeholder,
+input[id*="input-google-search"]::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
