@@ -40,8 +40,8 @@ Create  an `.env` file in the root of the project folder. Insert the following i
 ```
 PORT=3000
 DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=Starlight Yam Confusion1
+DB_USER=
+DB_PASSWORD=
 DB=momentumclonedb
 DB_TASKS_TABLE=tasks
 DB_BM_TABLE=bookmarks
