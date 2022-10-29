@@ -8,7 +8,7 @@ const con = mysql.createConnection({
     database: process.env.DB
 });
 
-/* con.connect(function(err) {
+ con.connect(function(err) {
 	let sqlQuery = `CREATE DATABASE ${process.env.DB}`;
     if (err) throw err;
     console.log("Connected!");
@@ -26,6 +26,6 @@ const con = mysql.createConnection({
         if (err) throw err;
         console.log("Bookmarks table created");
     });
-}); */
+}); 
 
 module.exports = con;
