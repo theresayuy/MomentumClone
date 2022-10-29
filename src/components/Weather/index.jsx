@@ -34,7 +34,9 @@ function Weather() {
     });
 
     return (
-        <div className="Weather">
+        <div className="Weather"
+            title="NOTE: This feature is broken for the demo website."        
+        >
             <div id="temperature">{weatherInfo.temperature}</div>
             <div id="condition">{weatherInfo.condition}</div>
         </div> 

@@ -1,4 +1,3 @@
-const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const con = require('./db');
@@ -11,21 +10,6 @@ app.use(cors());
 const listener = app.listen(process.env.PORT, () => {
     console.log(`App is listening on port ${listener.address().port}`)
 });
-
-/*********************************/
-/*                               */
-/*              HEROKU           */
-/*                               */
-/*********************************/
-
-// declare react files in build as static
-app.use(express.static(path.join(__dirname, "build")));
-
-// serve index.html from the build folder
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
 
 /******************************************/
 /*                                        */
