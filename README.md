@@ -38,7 +38,7 @@ npm install
 
 Create  an `.env` file in the root of the project folder. Insert the following into it:
 ```
-PORT=3000
+PORT=5000
 DB_HOST=localhost
 DB_USER=
 DB_PASSWORD=
@@ -46,8 +46,8 @@ DB=momentumclonedb
 DB_TASKS_TABLE=tasks
 DB_BM_TABLE=bookmarks
 REACT_APP_CRYPTO_JS_KEY=
-REACT_APP_TABLE_URL_TASKS=http://localhost:3000/tasks
-REACT_APP_TABLE_URL_BM=http://localhost:3000/bookmarks
+REACT_APP_TABLE_URL_TASKS=http://localhost:5000/tasks
+REACT_APP_TABLE_URL_BM=http://localhost:5000/bookmarks
 REACT_APP_API_KEY_OWM=
 ```
 Set the values of `DB_USER` and `DB_PASSWORD` to the values you used to setup MySQL. Set the value of `REACT_APP_API_KEY_OWM` to the OpenWeatherMap API key that you generated from your account. Set the value of `REACT_APP_CRYPTO_JS_KEY` to anything you want.
