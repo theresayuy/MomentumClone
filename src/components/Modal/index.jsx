@@ -30,7 +30,6 @@ function Modal(props) {
         <div 
             className={props.getParentIsOpen()} 
             id={`${props.desc}-modal`}
-            title="NOTE: This feature is broken for the demo website."
         >
             <div 
                 className="Modal-Content" 
