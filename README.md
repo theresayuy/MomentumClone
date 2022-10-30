@@ -1,6 +1,8 @@
 # Momentum Clone
 Clone of the popular browser new tab page extension, [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=en) by [momentumdash.com](https://momentumdash.com/). 
 
+The demo of this web app can be found [here](https://momentum-clone-demo.herokuapp.com). The to-do list, bookmarks list, and weather features are broken on the demo. You'll need to follow the [Installation Guide](https://github.com/theresayuy/MomentumClone/blob/main/README.md#installation-guide) and use this program locally for full functionality. 
+
 ## Features
 - Random quote and background image generated once a day
 - Search Google
